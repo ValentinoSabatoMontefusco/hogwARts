@@ -8,6 +8,7 @@ public class InactiveTest : MonoBehaviour
     public GameObject gollumPrefab;
     public GameObject silentPrefab;
     public GameObject goldenPrefab;
+    public GameObject catPrefab;
     public GameObject thisCamera;
 
 
@@ -33,4 +34,10 @@ public class InactiveTest : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    public void CatTest()
+    {
+        Vector3 spawnPosition = thisCamera.transform.position + Vector3.forward;
+        Instantiate(catPrefab, spawnPosition, thisCamera.transform.rotation);
+        gameObject.SetActive(false);
+    }
 }

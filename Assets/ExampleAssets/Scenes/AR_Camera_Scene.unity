@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4440221, g: 0.4931649, b: 0.57223153, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 22732925}
   m_Layer: 0
   m_Name: AR Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -941,7 +941,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 758062324}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1716085814}
+        m_TargetAssemblyTypeName: InactiveTest, Assembly-CSharp
+        m_MethodName: CatTest
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &758062324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1555,6 +1567,8 @@ MonoBehaviour:
   silentPrefab: {fileID: 5256227324920573449, guid: aed54e86202d6c7409d6f618951752a8,
     type: 3}
   goldenPrefab: {fileID: 3504051506429806306, guid: de25f9c4eca1bb1449361cfac8523c47,
+    type: 3}
+  catPrefab: {fileID: 6534178391613155763, guid: 0ec959e0cc20a6641a814db4b97bd0fd,
     type: 3}
   thisCamera: {fileID: 22732919}
 --- !u!224 &1716085815
