@@ -16,8 +16,10 @@ public class CatScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         if (Application.platform == RuntimePlatform.Android)
         {
+            Debug.Log("Android check: fatto");
             if (!Permission.HasUserAuthorizedPermission(Permission.Microphone))
             {
                 Permission.RequestUserPermission(Permission.Microphone);
@@ -26,19 +28,21 @@ public class CatScript : MonoBehaviour
 
         if (!SpeechRecognizer.ExistsOnDevice())
         {
-            Debug.Log("Federica Panicucci!");
+            Debug.Log("Federica Panicucci! Niente speech recognition!");
             //Destroy(gameObject);
         }
         else
         {
             Debug.Log("All fair with the speech recognizer");
+            if(audioListener == null)
+                audioListener = GameObject.FindObjectOfType<SpeechRecognizerListener>();
         }
         catText = GetComponentInChildren<TextMeshPro>();
 
         //audioListener.onAuthorizationStatusFetched.AddListener(OnAuthorizationStatusFetched);
         //audioListener.onAvailabilityChanged.AddListener(OnAvailabilityChange);
-        //audioListener.onErrorDuringRecording.AddListener(OnError);
-        //audioListener.onErrorOnStartRecording.AddListener(OnError);
+        audioListener.onErrorDuringRecording.AddListener(OnErrorDuring);
+        audioListener.onErrorOnStartRecording.AddListener(OnErrorFirst);
         //audioListener.onFinalResults.AddListener(OnFinalResult);
         audioListener.onPartialResults.AddListener(OnPartialResult);
         audioListener.onEndOfSpeech.AddListener(OnEndOfSpeech);
@@ -55,13 +59,15 @@ public class CatScript : MonoBehaviour
         
     }
 
-   private void OnPartialResult(string eventFecies)
+   public void OnPartialResult(string eventFecies)
     {
+        Debug.Log("Partial result listened");
         catText.text = eventFecies;
     }
     
-    private void OnEndOfSpeech()
+    public void OnEndOfSpeech()
     {
+        Debug.Log("End of speech triggered");
         StopAllCoroutines();
         StartCoroutine(EndListenage());
     }
@@ -84,11 +90,13 @@ public class CatScript : MonoBehaviour
     {
         if(SpeechRecognizer.IsRecording())
         {
+            Debug.Log("Device found recording on boop");
             catText.text += "\n Boopity stop!";
             SpeechRecognizer.StopIfRecording();
         }
         else
         {
+            Debug.Log("Device found not recording on boop");
             catText.text = "Booped!";
             SpeechRecognizer.StartRecording(true);
             if (SpeechRecognizer.IsRecording())
@@ -98,6 +106,15 @@ public class CatScript : MonoBehaviour
                 catText.text += "Still not recording :(\n";
             }
         }
+    }
+
+    private void OnErrorDuring(string error)
+    {
+        Debug.Log("OnErrorDuring says: " + error);
+    }
+    private void OnErrorFirst(string error)
+    {
+        Debug.Log("OnErrorFirst says: " + error);
     }
 
 
