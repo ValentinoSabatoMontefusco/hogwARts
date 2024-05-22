@@ -38,7 +38,18 @@ namespace KKSpeech
     public UnityEvent onEndOfSpeech = new UnityEvent();
     public UnityEvent onReadyForSpeech = new UnityEvent();
 
-    void AvailabilityDidChange(string available)
+    // Valerio added *****************************************
+    public UnityEvent onDesperation = new UnityEvent();
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            onDesperation.Invoke();
+        }
+    }
+
+        void AvailabilityDidChange(string available)
     {
       Debug.Log("AvailabilityDidChange " + available);
       onAvailabilityChanged.Invoke(available.Equals("1"));

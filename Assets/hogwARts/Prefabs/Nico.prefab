@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1129749472244423344}
   - component: {fileID: 3204060268248501054}
   - component: {fileID: 7909221476372210133}
-  - component: {fileID: 1169353418155632595}
+  - component: {fileID: 1148070956478559114}
   m_Layer: 0
   m_Name: Quad
   m_TagString: Untagged
@@ -101,7 +101,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1169353418155632595
+--- !u!114 &1148070956478559114
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,10 +110,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2765910753579484723}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 461742d8c04f5284190f598bf0eb7110, type: 3}
+  m_Script: {fileID: 11500000, guid: 44b5d64bc3ace004a851fc6953ae3060, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioListener: {fileID: 3585259951439721739}
+  catText: {fileID: 8909517890263370079}
   noseBoop: {fileID: 3471251394895716247}
 --- !u!1 &3471251394895716247
 GameObject:
@@ -488,15 +488,3 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3585259951428287329}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3585259951439721739 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 11439722, guid: 69c76459e92ef4228aad5dd1d7ab7921,
-    type: 3}
-  m_PrefabInstance: {fileID: 3585259951428287329}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58a45e6b21ee748fc93436bfc55e8b1e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
