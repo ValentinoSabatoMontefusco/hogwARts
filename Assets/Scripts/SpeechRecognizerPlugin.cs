@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 public abstract class SpeechRecognizerPlugin
 {
     protected bool isContinuousListening = false;
-    protected string language = "en-US";
+    protected string language = "it";
     protected int maxResults = 10;
     protected string gameObjectName = "SpeechRecognizer";
+    public UnityEvent OnListenStart = new();
+    public UnityEvent OnListenFinish = new();
     
     protected SpeechRecognizerPlugin(string gameObjectName = null)
     {
@@ -39,12 +42,22 @@ public abstract class SpeechRecognizerPlugin
     //Features
     protected abstract void SetUp();
     public abstract void StartListening();
-    public abstract void StartListening(bool setContinuousListening = false, string language = "en-US", int maxResults = 10);
+    public abstract void StartListening(bool setContinuousListening = false, string language = "it", int maxResults = 10);
     public abstract void StopListening();
+    public abstract bool isListening();
     
     //Remember that all this modifier-methods will be applied when the last recognition ends...
     //...so only use them if continuous listening is enabled.
     public abstract void SetContinuousListening(bool isContinuousListening);
     public abstract void SetLanguageForNextRecognition(string newLanguage);
     public abstract void SetMaxResultsForNextRecognition(int newMaxResults);
+
+    protected void TriggerOnListenStart()
+    {
+        OnListenStart.Invoke();
+    }
+    protected void TriggerOnListenFinish()
+    {
+        OnListenFinish.Invoke();
+    }
 }

@@ -46,4 +46,9 @@ public class SpeechRecognizerPlugin_Editor : SpeechRecognizerPlugin
         Debug.Log("Max results set: " + newMaxResults);
         this.maxResults = newMaxResults;
     }
+
+    public override bool isListening()
+    {
+        throw new System.NotImplementedException();
+    }
 }
