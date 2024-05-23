@@ -21,17 +21,21 @@ public class QuadTree
 
     private QuadTreeNode root; // Root node of the quadtree
     private int capacity; // Maximum capacity of points in a node before subdividing
+    private int count;
+    public int Count { get => count; }
 
     public QuadTree(Rect boundary, int capacity)
     {
         root = new QuadTreeNode(boundary);
         this.capacity = capacity;
+        this.count = 0;
     }
 
     // Insert a point into the quadtree
     public void Insert(Vector2 point)
     {
         Insert(root, point);
+        count++;
     }
 
     private void Insert(QuadTreeNode node, Vector2 point)

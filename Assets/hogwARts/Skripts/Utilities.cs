@@ -61,5 +61,75 @@ public static class Utilities
 
         return squaredDistance;
     }
+
+    public static float CalculateBearing(float lat1, float lon1, float lat2, float lon2)
+    {
+        double latitude1 = Mathf.Deg2Rad * lat1;
+        double latitude2 = Mathf.Deg2Rad * lat2;
+        double longDiff = Mathf.Deg2Rad * (lon2 - lon1);
+
+        double y = Mathf.Sin((float)longDiff) * Mathf.Cos((float)latitude2);
+        double x = Mathf.Cos((float)latitude1) * Mathf.Sin((float)latitude2) - Mathf.Sin((float)latitude1) * Mathf.Cos((float)latitude2) * Mathf.Cos((float)longDiff);
+
+        return (Mathf.Atan2((float)y, (float)x) * Mathf.Rad2Deg + 360) % 360;
+    }
+
+    public static float CalculateHeading(Vector3 acceleration, Vector3 magnetometer)
+    {
+        float heading = Mathf.Atan2(magnetometer.y, magnetometer.x) * Mathf.Rad2Deg;
+        return heading < 0 ? heading += 360 : heading;
+    }
+
+    public static string ElaborateDirection(float directionValue)
+    {
+        string directionString = "indefinite";
+
+        if (directionValue < 22.5 || directionValue >= 337.5)
+        {
+            directionString = "Ahead";
+        }
+        else if (directionValue >= 22.5 && directionValue < 67.5)
+        {
+            directionString = "Northeast";
+        }
+        else if (directionValue >= 67.5 && directionValue < 112.5)
+        {
+            directionString = "Right";
+        }
+        else if (directionValue >= 112.5 && directionValue < 157.5)
+        {
+            directionString = "Southeast";
+        }
+        else if (directionValue >= 157.5 && directionValue < 202.5)
+        {
+            directionString = "Behind";
+        }
+        else if (directionValue >= 202.5 && directionValue < 247.5)
+        {
+            directionString = "Southwest";
+        }
+        else if (directionValue >= 247.5 && directionValue < 292.5)
+        {
+            directionString = "Left";
+        }
+        else if (directionValue >= 292.5 && directionValue < 337.5)
+        {
+            directionString = "Northwest";
+        }
+        return directionString;
+    }
+
+    public static float LogLerp(float a, float b, float t)
+    {
+        // Ensure a and b are positive to avoid issues with logarithms
+        if (a <= 0 || b <= 0)
+        {
+            Debug.LogError("Logarithmic interpolation requires positive values.");
+            return 0;
+        }
+
+        return a * Mathf.Pow(b / a, t);
+    }
+
 }
 

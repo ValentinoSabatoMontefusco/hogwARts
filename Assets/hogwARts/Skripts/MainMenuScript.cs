@@ -12,52 +12,62 @@ using UnityEngine.UI;
 public class MainMenuScript : MonoBehaviour
 {
     public Text menuText;
-    LocationService locServ;
+    [SerializeField]
+    GameObject Deathly;
+    [SerializeField]
+    GameObject debugView;
+    [SerializeField]
+    GameObject mainView;
+    //LocationService locServ;
     const float MILLS = 0.001f;
     QuadTree locations;
 
     GPSCoordinate myRoom = new GPSCoordinate(40.91540078137776f, 14.82838650405708f, "stanza di Valentino");
-
-
-
     Hashtable lokescions;
+    LocalizationLogic locLogic;
+    bool isMenuDebug = true;
+    
+    
     public void Awake()
     {
-        locServ = new LocationService();
-        locServ.Start();
-        menuText.text = "Location Service tried to activate and did so";
+        isMenuDebug = true;
+        locLogic = GetComponent<LocalizationLogic>();
+        locLogic.onLocationCheck.AddListener(updateUI);
+        //locServ = new LocationService();
+        //locServ.Start();
+        //menuText.text = "Location Service tried to activate and did so";
 
-        lokescions = new Hashtable();
-        menuText.text += ".";
-        if (Application.platform == RuntimePlatform.Android)
-        {
-            StartCoroutine(CoroutineUmiliante());
-        } else
-        {
-            GPSCoordinate[] hotspots = InitializeHotspots();
+        //lokescions = new Hashtable();
+        //menuText.text += ".";
+        //if (Application.platform == RuntimePlatform.Android)
+        //{
+        //    StartCoroutine(CoroutineUmiliante());
+        //} else
+        //{
+        //    GPSCoordinate[] hotspots = InitializeHotspots();
 
-            menuText.text += hotspots.Length;
-            //Debug.Log(hotspots[0]);
-            foreach (GPSCoordinate hotspot in hotspots)
-            {
-                lokescions.Add(new Vector2(hotspot.Gps_position.x, hotspot.Gps_position.y), hotspot.Name);
-            }
+        //    menuText.text += hotspots.Length;
+        //    //Debug.Log(hotspots[0]);
+        //    foreach (GPSCoordinate hotspot in hotspots)
+        //    {
+        //        lokescions.Add(new Vector2(hotspot.Gps_position.x, hotspot.Gps_position.y), hotspot.Name);
+        //    }
 
-            menuText.text += ".";
+        //    menuText.text += ".";
 
-            locations = new QuadTree(new Rect(40.5f, 14.5f, 1f, 1f), 2);
+        //    locations = new QuadTree(new Rect(40.5f, 14.5f, 1f, 1f), 2);
 
-            foreach (Vector2 point in lokescions.Keys)
-            {
-                locations.Insert(point);
-            }
-            menuText.text += ".";
-        }
-        
-
+        //    foreach (Vector2 point in lokescions.Keys)
+        //    {
+        //        locations.Insert(point);
+        //    }
+        //    menuText.text += ".";
+        //}
 
 
-        
+
+
+
 
         //lokescions.Add(new Vector2(40.91540078137776f, 14.82838650405708f), "stanza di Valentino");
         //lokescions.Add(new Vector2(40.914094468604254f, 14.80575556180331f), "parco Manganelly");
@@ -65,72 +75,109 @@ public class MainMenuScript : MonoBehaviour
         //lokescions.Add(new Vector2(40.91723858701945f, 14.830413909754018f), "PAM nderro casa");
         //lokescions.Add(new Vector2(40.92197959327504f, 14.83398339992653f), "villa comunale");
 
-        
+
 
         //Vector2 nearest = locations.FindNearestNeighbor(new Vector2(40.915000f, 14.82840000f));
         //menuText.text = "Debug: nearest lat: " + nearest.x + ", long: " + nearest.y;
 
-        
+
     }
 
     public void Start()
 
     {
-        menuText.text += ".";
-        Permission.RequestUserPermission(Permission.FineLocation);
+        //menuText.text += ".";
+        //Permission.RequestUserPermission(Permission.FineLocation);
 
-        menuText.text += ".";
+        //menuText.text += ".";
 
-        if (locServ.status == LocationServiceStatus.Running)
-        {
-            StartCoroutine(checkLocation());
-            menuText.text += ". succesfully.";
-        } else
-            menuText.text += ". failurely :c";
-
+        //if (locServ.status == LocationServiceStatus.Running)
+        //{
+        //    StartCoroutine(checkLocation());
+        //    menuText.text += ". succesfully.";
+        //} else
+        //    menuText.text += ". failurely :c";
+        
+        
 
     }
 
-    IEnumerator checkLocation()
+    private void updateUI(LocationInfoPackage locInfo)
     {
-        float x;
-        float y;
-        do
+        if (isMenuDebug)
         {
-            yield return new WaitForSeconds(3.0f);
-            x = Input.location.lastData.longitude;
-            y = Input.location.lastData.latitude;
+            menuText.text = "Thy current coordinates are: Lat ~ " + locInfo.CurrentLocation.y + ", Long: ~ " + locInfo.CurrentLocation.x + "\n";
             
-            GPSCoordinate currCord = new GPSCoordinate(y, x);
-
-            Vector2 nearestNeighbour = locations.FindNearestNeighbor(new Vector2(y, x)); // The Quadtree works with x as latitude and y as longitude
-            GPSCoordinate nearestHotspot = new GPSCoordinate(nearestNeighbour.x, nearestNeighbour.y, (string)lokescions[nearestNeighbour]);
-
-            menuText.text = "Your current coordinates are: Lat: ~ " + y + ", Long: ~ " + x;
-            float hotspotDistance = Utilities.EuclideanDistanceM(new Vector2(y, x), nearestNeighbour);
-
-            if (hotspotDistance < 25)
+            if (locInfo.Distance < 25)
             {
-                menuText.text += "\nThey match ";
-            } else if (hotspotDistance < 100)
+                menuText.text += "\nThey kinda match ";
+            }
+            else if (locInfo.Distance < 100)
             {
                 menuText.text += "\nThey're pristy close to ";
-            } else
+            }
+            else
             {
 
-                menuText.text += "\nThey do be pretty far from ";
+                menuText.text += "\nThey do be pretty darn far from ";
             }
 
-            menuText.text += nearestHotspot.Name + " (" + Utilities.EarthDistanceFormattedString(hotspotDistance) + ")";
-            menuText.text += "\n NearHot: Lat: " + nearestHotspot.Gps_position.y.ToString("F3") + ", Lng: " + nearestHotspot.Gps_position.x.ToString("F3");
-            menuText.color = Color.Lerp(Color.green, new Color(1, 1, 0.4f, 0.5f), hotspotDistance < 500 ? hotspotDistance / 500 : 1);
-            
+            menuText.text += locInfo.NearestNeighbor.Name + " (" + Utilities.EarthDistanceFormattedString(locInfo.Distance) + ")";
+            menuText.text += "\n NearHot: Lat: " + locInfo.NearestNeighbor.Gps_position.y.ToString("F3") + ", Lng: " + locInfo.NearestNeighbor.Gps_position.x.ToString("F3");
+            menuText.text += "\n Direction: " + Utilities.ElaborateDirection(locInfo.DirectionAngle);
+            menuText.color = Color.Lerp(Color.green, new Color(1, 1, 0.4f, 0.5f), locInfo.Distance < 500 ? locInfo.Distance / 500 : 1);
 
-        } while (locServ.status == LocationServiceStatus.Running);
-
-        yield break;
-
+        } else
+        {
+            Deathly.GetComponent<Image>().color = Color.Lerp(new Color(1, 1, 1, 1), new Color(1, 1, 1, 0.3f), locInfo.Distance < 500 ? locInfo.Distance / 500 : 1);
+            float lerpScale = Utilities.LogLerp(0.5f, 1.8f, locInfo.Distance > 500 ? 0 : (500 - locInfo.Distance) / 500);
+            Deathly.transform.localScale = new Vector3(lerpScale, lerpScale, lerpScale);
+            Deathly.transform.rotation = Quaternion.Euler(0, 0, - locInfo.DirectionAngle);
+        }
     }
+
+    //IEnumerator checkLocation()
+    //{
+    //    float x;
+    //    float y;
+    //    do
+    //    {
+    //        yield return new WaitForSeconds(3.0f);
+    //        x = Input.location.lastData.longitude;
+    //        y = Input.location.lastData.latitude;
+
+    //        GPSCoordinate currCord = new GPSCoordinate(y, x);
+
+    //        Vector2 nearestNeighbour = locations.FindNearestNeighbor(new Vector2(y, x)); // The Quadtree works with x as latitude and y as longitude
+    //        GPSCoordinate nearestHotspot = new GPSCoordinate(nearestNeighbour.x, nearestNeighbour.y, (string)lokescions[nearestNeighbour]);
+
+    //        menuText.text = "Your current coordinates are: Lat: ~ " + y + ", Long: ~ " + x;
+    //        float hotspotDistance = Utilities.EuclideanDistanceM(new Vector2(y, x), nearestNeighbour);
+
+    //        if (hotspotDistance < 25)
+    //        {
+    //            menuText.text += "\nThey match ";
+    //        }
+    //        else if (hotspotDistance < 100)
+    //        {
+    //            menuText.text += "\nThey're pristy close to ";
+    //        }
+    //        else
+    //        {
+
+    //            menuText.text += "\nThey do be pretty far from ";
+    //        }
+
+    //        menuText.text += nearestHotspot.Name + " (" + Utilities.EarthDistanceFormattedString(hotspotDistance) + ")";
+    //        menuText.text += "\n NearHot: Lat: " + nearestHotspot.Gps_position.y.ToString("F3") + ", Lng: " + nearestHotspot.Gps_position.x.ToString("F3");
+    //        menuText.color = Color.Lerp(Color.green, new Color(1, 1, 0.4f, 0.5f), hotspotDistance < 500 ? hotspotDistance / 500 : 1);
+
+
+    //    } while (locServ.status == LocationServiceStatus.Running);
+
+    //    yield break;
+
+    //}
 
     private bool inRange(float value, float target, float delta)
     {
@@ -226,5 +273,26 @@ public class MainMenuScript : MonoBehaviour
 
     }
 
+    public void swapView()
+    {
+
+        if (debugView == null || mainView == null)
+        {
+            Debug.LogError("Una delle viste è assenti!");
+            return;
+        }
+
+        if(isMenuDebug)
+        {
+            debugView.SetActive(false);
+            mainView.SetActive(true);
+            isMenuDebug = false;
+        } else
+        {
+            debugView.SetActive(true);
+            mainView.SetActive(false);
+            isMenuDebug = true;
+        }
+    }
     
 }
