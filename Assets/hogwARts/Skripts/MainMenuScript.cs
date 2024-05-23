@@ -124,7 +124,7 @@ public class MainMenuScript : MonoBehaviour
 
             menuText.text += locInfo.NearestNeighbor.Name + " (" + Utilities.EarthDistanceFormattedString(locInfo.Distance) + ")";
             menuText.text += "\n NearHot: Lat: " + locInfo.NearestNeighbor.Gps_position.y.ToString("F3") + ", Lng: " + locInfo.NearestNeighbor.Gps_position.x.ToString("F3");
-            menuText.text += "\n Direction: " + Utilities.ElaborateDirection(locInfo.DirectionAngle);
+            menuText.text += "\n Direction: " + Utilities.ElaborateDirection(locInfo.DirectionAngle) + " (" + locInfo.DirectionAngle + "°)";
             menuText.color = Color.Lerp(Color.green, new Color(1, 1, 0.4f, 0.5f), locInfo.Distance < 500 ? locInfo.Distance / 500 : 1);
 
         } else
