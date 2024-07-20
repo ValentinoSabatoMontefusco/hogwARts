@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 8974172020741522708}
   - component: {fileID: 567622082205089028}
   - component: {fileID: 7509299776239824434}
+  - component: {fileID: 2013654708337015739}
   m_Layer: 5
   m_Name: Text (Legacy)
-  m_TagString: Untagged
+  m_TagString: Horcrux
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,6 +102,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &2013654708337015739
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368018068286361634}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 105, y: 13, z: 3}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7403919350154759612
 GameObject:
   m_ObjectHideFlags: 0
@@ -115,7 +129,7 @@ GameObject:
   - component: {fileID: 4540899961018515327}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: Horcrux
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -213,7 +227,7 @@ GameObject:
   - component: {fileID: 1494072844316485718}
   m_Layer: 0
   m_Name: taragozza_old
-  m_TagString: Untagged
+  m_TagString: Horcrux
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
