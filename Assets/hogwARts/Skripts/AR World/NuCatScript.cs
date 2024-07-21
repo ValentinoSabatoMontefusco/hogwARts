@@ -12,6 +12,8 @@ public class NuCatScript : MonoBehaviour, ISpeechRecognizerPlugin
     TextMeshPro catText;
     [SerializeField]
     GameObject noseBoop;
+    [SerializeField]
+    InactiveTest testScript;
 
     public void OnError(string recognizedError)
     {
@@ -35,8 +37,23 @@ public class NuCatScript : MonoBehaviour, ISpeechRecognizerPlugin
         //        goto SettePuntoCinque;
         //}
         catText.text += results[0];
+
         if (results[0].ToLower().Contains("gianluca") || results[0].ToLower().Contains("umberto"))
                 goto SettePuntoCinque;
+
+        if (InterSceneData.currentNearestLocation.Name != "PAM nderro casa")
+        {
+            foreach (string s in results)
+            {
+                if (s.ToLower().Contains("accio spada"))
+                {
+                    testScript.SpawnEquip("Sword");
+                    break;
+                }
+                    
+            }
+        }
+        
 
 
         SRP.StopListening();

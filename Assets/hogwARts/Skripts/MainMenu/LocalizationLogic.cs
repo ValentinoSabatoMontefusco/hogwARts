@@ -132,6 +132,7 @@ public class LocalizationLogic : MonoBehaviour
 
             debugText.text = "Bearing: " + bearing + "\nHeading: " + heading + "\nRelative Direction: " + relativeDirection + "\nWe fucked?";
 
+            InterSceneData.currentNearestLocation = nearestHotspot;
             onLocationCheck.Invoke(new LocationInfoPackage(currCord.Gps_position, nearestHotspot, relativeDirection));
 
             //menuText.text = "Your current coordinates are: Lat: ~ " + y + ", Long: ~ " + x;
