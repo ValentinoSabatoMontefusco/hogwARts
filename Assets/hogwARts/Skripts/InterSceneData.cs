@@ -8,6 +8,7 @@ public static class InterSceneData
 
     public static Color GetColorByLocation(GPSCoordinate location)
     {
+        Debug.Log("InterSceneData reads location name: " + location.Name);
         Color newColor;
         if (colourz.TryGetValue(location.Name, out newColor))
             return newColor;

@@ -22,6 +22,12 @@ public class TestFeatures : MonoBehaviour
     Vector2 lineStart;
     Vector2 lineEnd;
     public GameObject hitVFX;
+
+    [SerializeField]
+    GameObject swordPrefab;
+    [SerializeField]
+    GameObject swipeTrail;
+    static bool equipped = false;
     
     // Start is called before the first frame update
     void Start()
@@ -145,7 +151,16 @@ public class TestFeatures : MonoBehaviour
 
         return hit.collider;
     }
-    
 
+    public void SpawnEquip(string equip)
+    {
+        if (equip != "Sword" || equipped)
+            return;
+
+        Instantiate(swordPrefab, GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>());
+        swipeTrail.SetActive(true);
+        equipped = true;
+
+    }
 
 }

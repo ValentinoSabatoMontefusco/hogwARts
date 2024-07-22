@@ -10,18 +10,12 @@ public class InactiveTest : MonoBehaviour
     public GameObject goldenPrefab;
     public GameObject catPrefab;
     public GameObject thisCamera;
-    public GameObject swordPrefab;
 
-    bool equipped = false;
+    public TestFeatures supportingScript;
 
-    public void SpawnEquip(string equip) 
-    {
-        if (equip != "Sword" || equipped)
-            return;
+    
 
-        Instantiate(swordPrefab, thisCamera.transform);
-        equipped = true;
-    }
+    
 
 
     public void GollumTest()
@@ -34,7 +28,7 @@ public class InactiveTest : MonoBehaviour
     public void SHTest()
     {
         TestFeatures.swipeEnabled = true;
-        
+        supportingScript.SpawnEquip("Sword");
         Vector3 spawnPosition = thisCamera.transform.position + Vector3.forward;
         Instantiate(silentPrefab, spawnPosition, thisCamera.transform.rotation);
         gameObject.SetActive(false);

@@ -13,7 +13,7 @@ public class NuCatScript : MonoBehaviour, ISpeechRecognizerPlugin
     [SerializeField]
     GameObject noseBoop;
     [SerializeField]
-    InactiveTest testScript;
+    TestFeatures testScript;
 
     public void OnError(string recognizedError)
     {
@@ -74,6 +74,8 @@ public class NuCatScript : MonoBehaviour, ISpeechRecognizerPlugin
         GetComponentInChildren<BoopScript>().OnBoop.AddListener(booped);
         SRP.OnListenStart.AddListener(OnListenStart);
         SRP.OnListenFinish.AddListener(OnListenFinish);
+        if (testScript == null)
+            testScript = GameObject.Find("AR Session Origin").GetComponent<TestFeatures>();
     }
 
 

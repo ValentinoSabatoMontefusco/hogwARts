@@ -144,7 +144,7 @@ public class MainMenuScript : MonoBehaviour
             Deathly.GetComponent<Image>().color = Color.Lerp(new Color(1, 1, 1, 1), new Color(1, 1, 1, 0.3f), locInfo.Distance < 500 ? locInfo.Distance / 500 : 1);
             float lerpScale = Utilities.LogLerp(0.5f, 1.8f, locInfo.Distance > 500 ? 0 : (500 - locInfo.Distance) / 500);
             Deathly.transform.localScale = new Vector3(lerpScale, lerpScale, lerpScale);
-            Deathly.GetComponent<Renderer>().material.color = InterSceneData.GetColorByLocation(InterSceneData.currentNearestLocation);
+            Deathly.GetComponent<Image>().color = InterSceneData.GetColorByLocation(InterSceneData.currentNearestLocation);
             if (latestDistance > SPIN_THRESHOLD)
             {
                 //Deathly.GetComponent<Animator>().SetBool("SpinSpin", false);
@@ -165,16 +165,18 @@ public class MainMenuScript : MonoBehaviour
 
     IEnumerator rotationAnimation(Transform objectTransform, float multiplier, float duration)
     {
+        Debug.Log("SpinSpin activated");
         float remainingDuration = duration;
         while ((remainingDuration -= Time.deltaTime) > 0)
         {
-            objectTransform.RotateAround(objectTransform.position, Vector3.up, Time.deltaTime * (-360) * multiplier);
+            objectTransform.RotateAround(objectTransform.position, Vector3.forward, Time.deltaTime * (-360) * multiplier);
             yield return null;
         }
     }
 
     IEnumerator rotationAnimation(Transform objectTransform, Quaternion targetRotation, float duration)
     {
+        Debug.Log("Trying to turn Deathly towards objective");
         Transform startingTransform = objectTransform;
         float startingDuration = duration;
 
@@ -191,7 +193,7 @@ public class MainMenuScript : MonoBehaviour
 
     public void DeathClick(GameObject source)
     {
-        if (latestDistance <= 25)
+        if (latestDistance <= LocalizationLogic.UPDATE_INTERVAL)
         {
             LoadScene("AR_Camera_Scene");
         }

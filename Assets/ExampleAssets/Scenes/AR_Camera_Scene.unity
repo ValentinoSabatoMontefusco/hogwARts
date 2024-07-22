@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4440221, g: 0.4931649, b: 0.57223153, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -766,6 +766,9 @@ MonoBehaviour:
   eventSystem: {fileID: 1825070458971271654, guid: 3d0762dfb6602b945bdb51413df52573,
     type: 3}
   hitVFX: {fileID: 9027514048236820045, guid: 98d8265f7de56954e9d54468ae13d785, type: 3}
+  swordPrefab: {fileID: 8027303838666777824, guid: 9863d845b89613a49847981b60c0da17,
+    type: 3}
+  swipeTrail: {fileID: 855049184}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1146,7 +1149,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &855049185
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1730,8 +1733,8 @@ MonoBehaviour:
     type: 3}
   catPrefab: {fileID: 6534178391613155763, guid: 0ec959e0cc20a6641a814db4b97bd0fd,
     type: 3}
-  thisCamera: {fileID: 0}
-  swordPrefab: {fileID: 0}
+  thisCamera: {fileID: 22732919}
+  supportingScript: {fileID: 388525034}
 --- !u!224 &1716085815
 RectTransform:
   m_ObjectHideFlags: 0
