@@ -37,3 +37,53 @@ MonoBehaviour:
     m_SpecifySize: 1
     m_Name: taragozza
     m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5093758406164187732
+      m_GuidHigh: 12648093824575847842
+    m_SerializedTextureGuid:
+      m_GuidLow: 11516853916355927979
+      m_GuidHigh: 15369452029015613290
+    m_Size: {x: 0.3, y: 0.27416667}
+    m_SpecifySize: 1
+    m_Name: effigie_foresta
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5604337914875893623
+      m_GuidHigh: 2651383212576557236
+    m_SerializedTextureGuid:
+      m_GuidLow: 7256670448840443886
+      m_GuidHigh: 8696441903596818633
+    m_Size: {x: 0.47, y: 0.833241}
+    m_SpecifySize: 1
+    m_Name: caccaviello_rosso2
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5719549186493378699
+      m_GuidHigh: 1664319274253188534
+    m_SerializedTextureGuid:
+      m_GuidLow: 6522560446205073107
+      m_GuidHigh: 8069332494411147368
+    m_Size: {x: 0.45, y: 0.7977839}
+    m_SpecifySize: 1
+    m_Name: caccaviello_rosso1
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5644984218351696921
+      m_GuidHigh: 141586027709792430
+    m_SerializedTextureGuid:
+      m_GuidLow: 12277974648481638779
+      m_GuidHigh: 11964239155198911945
+    m_Size: {x: 0.37, y: 0.6816848}
+    m_SpecifySize: 1
+    m_Name: anceli_mercatone
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4747025152197178628
+      m_GuidHigh: 8821176803752532918
+    m_SerializedTextureGuid:
+      m_GuidLow: 14683048798562836170
+      m_GuidHigh: 14316595211258892264
+    m_Size: {x: 0.18, y: 0.31911358}
+    m_SpecifySize: 1
+    m_Name: ciorellino
+    m_Texture: {fileID: 0}

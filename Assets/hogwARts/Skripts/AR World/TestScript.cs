@@ -23,6 +23,16 @@ public class TestScript : MonoBehaviour
     private TextMeshProUGUI latestInst;
 
     private readonly Dictionary<string, GameObject> _instantiatedPrefabs = new Dictionary<string, GameObject>();
+
+    public GameObject diaryPrefab;
+    public GameObject naginiPrefab;
+    public GameObject costaPrefab;
+    public GameObject mercadantePrefab;
+
+    public Dictionary<string, GameObject> imageToPrefab;
+
+
+
     //  foreach(var trackedImage in eventArgs.added){
     // Get the name of the reference image
     //   var imageName = trackedImage.referenceImage.name;
@@ -38,6 +48,11 @@ public class TestScript : MonoBehaviour
         _trackedImagesManager = GetComponent<ARTrackedImageManager>();
         latestTracked = latestTrackedGO.GetComponent<TextMeshProUGUI>();
         latestInst = latestInstGO.GetComponent<TextMeshProUGUI>();
+        imageToPrefab = new Dictionary<string, GameObject>()
+                { { "costapertina",  costaPrefab}, {"taragozza", mercadantePrefab }, {"caccaviello_rosso1", naginiPrefab },
+                {"caccaviello_rosso2", naginiPrefab }, {"anceli_mercatone", naginiPrefab }, {"effigie_foresta", naginiPrefab },
+                {"ciorellino", mercadantePrefab } };
+
     }
 
     private void Update()
@@ -63,6 +78,25 @@ public class TestScript : MonoBehaviour
         {
             // Get the name of the reference image
             var imageName = trackedImage.referenceImage.name;
+            GameObject chosenPrefab;
+            bool debugBool = imageToPrefab.TryGetValue(imageName, out chosenPrefab);
+            Debug.Log("Checking image with name " + imageName);
+            if (!debugBool)
+            {
+                latestTracked.text = "Error with tracking!";
+                return;
+            } else
+            {
+                if (!_instantiatedPrefabs.ContainsKey(imageName))
+                {
+                    latestPrefab = Instantiate(chosenPrefab, trackedImage.transform);
+                    latestTracked.text = "Latest Tracked: " + imageName + " " + formattedPosition(trackedImage.transform);
+                    latestInst.text = "Latest Inst: " + chosenPrefab.name + " " + formattedPosition(latestPrefab.transform);
+
+
+                }
+            }
+            return;
             foreach (var curPrefab in ArPrefabs)
             {
                 // Check whether this prefab matches the tracked image name, and that
@@ -80,7 +114,7 @@ public class TestScript : MonoBehaviour
                     // Instantiate the prefab, parenting it to the ARTrackedImage
                     latestPrefab = Instantiate(curPrefab, trackedImage.transform);
 
-                    latestTracked.text = "Latest Tracked: " + imageName +  " " + formattedPosition(trackedImage.transform);
+                    latestTracked.text = "Latest Tracked: " + imageName + " " + formattedPosition(trackedImage.transform);
                     latestInst.text = "Latest Inst: " + curPrefab.name + " " + formattedPosition(latestPrefab.transform);
                     //}
                 }
@@ -119,6 +153,6 @@ public class TestScript : MonoBehaviour
     private String formattedPosition(Transform transform)
     {
 
-        return "(" + transform.position.x + ", " + transform.position.y + ", " + transform.position.z + ")";
+        return "(" + transform.localPosition.x + ", " + transform.localPosition.y + ", " + transform.localPosition.z + ")";
     }
 }
