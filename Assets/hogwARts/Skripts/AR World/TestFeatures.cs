@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -28,6 +29,7 @@ public class TestFeatures : MonoBehaviour
     [SerializeField]
     GameObject swipeTrail;
     static bool equipped = false;
+    public static Action OnTripleTap;
     
     // Start is called before the first frame update
     void Start()
@@ -36,18 +38,23 @@ public class TestFeatures : MonoBehaviour
         {
             Instantiate(eventSystem);
         }
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (tripleTap() && !debugged)
-        {
-            debugMenu.SetActive(true);
 
-            debugged = true;
-            debugText.color = Color.red;
+        if (tripleTap())
+        {
+            OnTripleTap?.Invoke();
+            if (!debugged)
+            {
+                debugMenu.SetActive(true);
+
+                debugged = true;
+                debugText.color = Color.red;
+            }
+            
             Debug.Log("Triple tap felt");
         }
 

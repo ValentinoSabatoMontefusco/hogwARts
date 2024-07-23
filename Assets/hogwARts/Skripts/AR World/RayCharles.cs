@@ -8,9 +8,15 @@ public class RayCharles : MonoBehaviour
 
     [SerializeField]
     GameObject hitVFX;
+    [SerializeField]
+    GameObject hufflePuffCup;
+
+    bool isAccioed = false;
+
     void Start()
     {
-        
+        TestFeatures.OnTripleTap += DisableAnimator;
+        NuCatScript.Accioing += Accioed;
     }
 
     // Update is called once per frame
@@ -28,6 +34,7 @@ public class RayCharles : MonoBehaviour
                 {
 
                     Instantiate(hitVFX, gameObject.transform.position, Quaternion.identity);
+                    Instantiate(hufflePuffCup, gameObject.transform.position, Quaternion.identity);
                     Destroy(gameObject);
 
                 }
@@ -37,5 +44,28 @@ public class RayCharles : MonoBehaviour
                 Debug.Log("Missed"!);
             }
         }
+
+        if (isAccioed)
+        {
+            if (transform.position != Camera.main.transform.position + Vector3.forward)
+            {
+
+                transform.position = Vector3.MoveTowards(transform.position, Camera.main.transform.position + Camera.main.transform.forward, 0.4f * Time.deltaTime);
+            }
+        }
     }
+
+    public void DisableAnimator()
+    {
+        GetComponentInParent<Animator>().enabled = !GetComponentInParent<Animator>().enabled;
+    }
+
+    private void Accioed(string accioed) 
+    {
+        if (string.Compare(accioed, "boccino", System.StringComparison.OrdinalIgnoreCase) == 0)
+        {
+            isAccioed = true;
+        }
+    }
+    
 }

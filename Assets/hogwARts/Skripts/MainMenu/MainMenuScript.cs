@@ -144,7 +144,7 @@ public class MainMenuScript : MonoBehaviour
             Deathly.GetComponent<Image>().color = Color.Lerp(new Color(1, 1, 1, 1), new Color(1, 1, 1, 0.3f), locInfo.Distance < 500 ? locInfo.Distance / 500 : 1);
             float lerpScale = Utilities.LogLerp(0.5f, 1.8f, locInfo.Distance > 500 ? 0 : (500 - locInfo.Distance) / 500);
             Deathly.transform.localScale = new Vector3(lerpScale, lerpScale, lerpScale);
-            Deathly.GetComponent<Image>().color = InterSceneData.GetColorByLocation(InterSceneData.currentNearestLocation);
+            //Deathly.GetComponent<Image>().color = InterSceneData.GetColorByLocation(InterSceneData.currentNearestLocation);
             if (latestDistance > SPIN_THRESHOLD)
             {
                 //Deathly.GetComponent<Animator>().SetBool("SpinSpin", false);

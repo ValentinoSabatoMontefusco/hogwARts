@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -14,6 +15,8 @@ public class NuCatScript : MonoBehaviour, ISpeechRecognizerPlugin
     GameObject noseBoop;
     [SerializeField]
     TestFeatures testScript;
+
+    public static Action<string> Accioing;
 
     public void OnError(string recognizedError)
     {
@@ -47,14 +50,22 @@ public class NuCatScript : MonoBehaviour, ISpeechRecognizerPlugin
             {
                 if (s.ToLower().Contains("accio spada"))
                 {
+                    Accioing?.Invoke("spada");
                     testScript.SpawnEquip("Sword");
                     break;
                 }
                     
             }
         }
-        
 
+        foreach(string s in results)
+        {
+            if (s.ToLower().Contains("accio boccino"))
+            {
+                Accioing?.Invoke("boccino");
+                break;
+            }
+        }
 
         SRP.StopListening();
         return;
