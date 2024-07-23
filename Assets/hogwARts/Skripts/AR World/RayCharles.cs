@@ -16,7 +16,7 @@ public class RayCharles : MonoBehaviour
     void Start()
     {
         TestFeatures.OnTripleTap += DisableAnimator;
-        NuCatScript.Accioing += Accioed;
+        VoiceScript.accioing += Accioed;
     }
 
     // Update is called once per frame

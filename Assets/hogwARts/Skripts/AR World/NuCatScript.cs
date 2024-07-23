@@ -58,6 +58,8 @@ public class NuCatScript : MonoBehaviour, ISpeechRecognizerPlugin
             }
         }
 
+        
+
         foreach(string s in results)
         {
             if (s.ToLower().Contains("accio boccino"))
