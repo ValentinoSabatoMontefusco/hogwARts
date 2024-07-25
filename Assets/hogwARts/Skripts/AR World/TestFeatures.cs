@@ -12,8 +12,8 @@ public class TestFeatures : MonoBehaviour
     private float tapDelay = 0.2f;
     private float lastTapTime;
     public GameObject testPrefab;
-    private bool debugged = false;
-    public static bool swipeEnabled = false;
+    private bool debugged;
+    public static bool swipeEnabled;
     public TextMeshProUGUI debugText;
 
     public GameObject debugMenu;
@@ -28,12 +28,16 @@ public class TestFeatures : MonoBehaviour
     GameObject swordPrefab;
     [SerializeField]
     GameObject swipeTrail;
-    static bool equipped = false;
+    static bool equipped;
     public static Action OnTripleTap;
     
     // Start is called before the first frame update
     void Start()
     {
+        debugged = false;
+        swipeEnabled = false;
+        equipped = false;
+        VoiceScript.accioing += SpawnEquip;
         if (GameObject.Find("EventSystem") == null)
         {
             Instantiate(eventSystem);
@@ -161,11 +165,11 @@ public class TestFeatures : MonoBehaviour
 
     public void SpawnEquip(string equip)
     {
-        if (equip != "Sword" || equipped)
+        if (string.Compare(equip, "spada", StringComparison.OrdinalIgnoreCase) != 0 || equipped)
             return;
 
         Instantiate(swordPrefab, GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>());
-        swipeTrail.SetActive(true);
+        //swipeTrail.SetActive(true);
         equipped = true;
 
     }

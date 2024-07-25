@@ -28,6 +28,8 @@ public class TestScript : MonoBehaviour
     public GameObject naginiPrefab;
     public GameObject costaPrefab;
     public GameObject mercadantePrefab;
+    public GameObject boccinoPrefab;
+    public GameObject medallionPrefab;
 
     public Dictionary<string, GameObject> imageToPrefab;
 
@@ -51,7 +53,9 @@ public class TestScript : MonoBehaviour
         imageToPrefab = new Dictionary<string, GameObject>()
                 { { "costapertina",  costaPrefab}, {"taragozza", mercadantePrefab }, {"caccaviello_rosso1", naginiPrefab },
                 {"caccaviello_rosso2", naginiPrefab }, {"anceli_mercatone", naginiPrefab }, {"effigie_foresta", naginiPrefab },
-                {"ciorellino", mercadantePrefab } };
+                {"ciorellino", boccinoPrefab }, {"10euro_fronte", medallionPrefab }, {"10euro_retro", medallionPrefab } };
+
+        latestTracked.text += "TestScript awakened...";
 
     }
 
@@ -74,12 +78,14 @@ public class TestScript : MonoBehaviour
     private void OnTrackedImagesChanged(ARTrackedImagesChangedEventArgs eventArgs)
     {
         GameObject latestPrefab;
+        latestTracked.text = "OnTrackedImagesChanged called";
         foreach (var trackedImage in eventArgs.added)
         {
             // Get the name of the reference image
             var imageName = trackedImage.referenceImage.name;
             GameObject chosenPrefab;
             bool debugBool = imageToPrefab.TryGetValue(imageName, out chosenPrefab);
+            latestTracked.text = "Checking image with name " + imageName;
             Debug.Log("Checking image with name " + imageName);
             if (!debugBool)
             {
@@ -97,28 +103,28 @@ public class TestScript : MonoBehaviour
                 }
             }
             return;
-            foreach (var curPrefab in ArPrefabs)
-            {
-                // Check whether this prefab matches the tracked image name, and that
-                // the prefab hasn't already been created
-                if (string.Compare(curPrefab.name, imageName, StringComparison.OrdinalIgnoreCase) == 0
-                 && !_instantiatedPrefabs.ContainsKey(imageName))
-                {
+            //foreach (var curPrefab in ArPrefabs)
+            //{
+            //    // Check whether this prefab matches the tracked image name, and that
+            //    // the prefab hasn't already been created
+            //    if (string.Compare(curPrefab.name, imageName, StringComparison.OrdinalIgnoreCase) == 0
+            //     && !_instantiatedPrefabs.ContainsKey(imageName))
+            //    {
 
-                    //if (string.Compare(imageName, "taragozza", StringComparison.OrdinalIgnoreCase) == 0)
-                    //{
-                    //    Vector3 slightlyAhead = trackedImage.transform.position + Vector3.zero;
-                    //    var newPrefab = Instantiate(curPrefab, slightlyAhead, Quaternion.identity);
+            //        //if (string.Compare(imageName, "taragozza", StringComparison.OrdinalIgnoreCase) == 0)
+            //        //{
+            //        //    Vector3 slightlyAhead = trackedImage.transform.position + Vector3.zero;
+            //        //    var newPrefab = Instantiate(curPrefab, slightlyAhead, Quaternion.identity);
 
-                    //} else { 
-                    // Instantiate the prefab, parenting it to the ARTrackedImage
-                    latestPrefab = Instantiate(curPrefab, trackedImage.transform);
+            //        //} else { 
+            //        // Instantiate the prefab, parenting it to the ARTrackedImage
+            //        latestPrefab = Instantiate(curPrefab, trackedImage.transform);
 
-                    latestTracked.text = "Latest Tracked: " + imageName + " " + formattedPosition(trackedImage.transform);
-                    latestInst.text = "Latest Inst: " + curPrefab.name + " " + formattedPosition(latestPrefab.transform);
-                    //}
-                }
-            }
+            //        latestTracked.text = "Latest Tracked: " + imageName + " " + formattedPosition(trackedImage.transform);
+            //        latestInst.text = "Latest Inst: " + curPrefab.name + " " + formattedPosition(latestPrefab.transform);
+            //        //}
+            //    }
+            //}
         }
         foreach (var trackedImage in eventArgs.updated)
         {

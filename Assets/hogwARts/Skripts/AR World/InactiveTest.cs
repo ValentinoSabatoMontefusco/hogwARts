@@ -8,7 +8,7 @@ public class InactiveTest : MonoBehaviour
     public GameObject gollumPrefab;
     public GameObject silentPrefab;
     public GameObject goldenPrefab;
-    public GameObject catPrefab;
+    public GameObject naginiPrefab;
     public GameObject thisCamera;
 
     public TestFeatures supportingScript;
@@ -27,8 +27,8 @@ public class InactiveTest : MonoBehaviour
 
     public void SHTest()
     {
-        TestFeatures.swipeEnabled = true;
-        supportingScript.SpawnEquip("Sword");
+        //TestFeatures.swipeEnabled = true;
+        supportingScript.SpawnEquip("spada");
         Vector3 spawnPosition = thisCamera.transform.position + Vector3.forward;
         Instantiate(silentPrefab, spawnPosition, thisCamera.transform.rotation);
         gameObject.SetActive(false);
@@ -38,15 +38,15 @@ public class InactiveTest : MonoBehaviour
     public void RayTest()
     {
 
-        Vector3 spawnPosition = thisCamera.transform.position + Vector3.forward;
+        Vector3 spawnPosition = thisCamera.transform.position + thisCamera.transform.forward;
         Instantiate(goldenPrefab, spawnPosition, thisCamera.transform.rotation);
         gameObject.SetActive(false);
     }
 
-    public void CatTest()
+    public void NaginiTest()
     {
-        Vector3 spawnPosition = thisCamera.transform.position + Vector3.forward;
-        Instantiate(catPrefab, spawnPosition, thisCamera.transform.rotation);
+        Vector3 spawnPosition = thisCamera.transform.position + thisCamera.transform.forward;
+        Instantiate(naginiPrefab, spawnPosition, thisCamera.transform.rotation);
         gameObject.SetActive(false);
     }
 }

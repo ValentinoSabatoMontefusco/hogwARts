@@ -14,7 +14,7 @@ public class CupScript : MonoBehaviour
     
     void Update()
     {
-        transform.Rotate(Vector3.up * 180 * Time.deltaTime);
+        transform.Rotate(Vector3.up * 120 * Time.deltaTime);
         if (!beInPlace)
         {
             if (Vector3.Distance(transform.position, (AR_Camera.transform.position + AR_Camera.transform.forward)) > 0.2f)

@@ -318,5 +318,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitVFX: {fileID: 8771972552311404799, guid: bbf9e36a48d6c5648a13889afab076fd, type: 3}
-  hufflePuffCup: {fileID: 4709846391592186135, guid: ef5288d7f1c1f8e4b89697b7bf3a4a67,
+  gauntRing: {fileID: 5638311089619043708, guid: a60e7c5dd108ed748bb71b722b791bf8,
     type: 3}

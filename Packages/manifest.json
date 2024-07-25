@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "com.unity.burst": "1.8.17",
+    "com.unity.cloud.gltfast": "6.7.0",
     "com.unity.collab-proxy": "2.0.1",
     "com.unity.feature.ar": "1.0.0",
     "com.unity.feature.development": "1.0.1",

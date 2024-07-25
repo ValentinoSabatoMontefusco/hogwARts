@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4440221, g: 0.4931649, b: 0.57223153, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -740,6 +740,10 @@ MonoBehaviour:
     type: 3}
   mercadantePrefab: {fileID: 8598512502179678704, guid: 0f14900f24067134694bc0e61560cab6,
     type: 3}
+  boccinoPrefab: {fileID: 3504051506429806306, guid: de25f9c4eca1bb1449361cfac8523c47,
+    type: 3}
+  medallionPrefab: {fileID: 2475787102489851627, guid: 6ebf747a26b780f4dbdf01fa7a76ce53,
+    type: 3}
 --- !u!114 &388525033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -971,7 +975,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1716085814}
         m_TargetAssemblyTypeName: InactiveTest, Assembly-CSharp
-        m_MethodName: CatTest
+        m_MethodName: NaginiTest
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1753,7 +1757,7 @@ MonoBehaviour:
     type: 3}
   goldenPrefab: {fileID: 3504051506429806306, guid: de25f9c4eca1bb1449361cfac8523c47,
     type: 3}
-  catPrefab: {fileID: 6534178391613155763, guid: 0ec959e0cc20a6641a814db4b97bd0fd,
+  naginiPrefab: {fileID: 4477495542435203126, guid: 97dccfcdc78c2014a9da037b3b779291,
     type: 3}
   thisCamera: {fileID: 22732919}
   supportingScript: {fileID: 388525034}

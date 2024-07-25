@@ -75,15 +75,12 @@ public class LocalizationLogic : MonoBehaviour
 
     public void Start()
     {
-        //if (Permission.HasUserAuthorizedPermission(Permission.FineLocation))
-        //{
-            
-        //}
-        //else
-        //{
-        //    //Handle permission denial
-        //}
-        
+        if (Permission.HasUserAuthorizedPermission(Permission.FineLocation) && locServ.status != LocationServiceStatus.Running)
+        {
+            locServ.Start();
+        }
+       
+
         Debug.Log("Localization service start() called");
         //GetComponent<MainMenuScript>().menuText.text = "Verifica location service cominziata...";
 

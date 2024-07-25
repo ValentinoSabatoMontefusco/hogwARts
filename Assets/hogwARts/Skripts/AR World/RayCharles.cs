@@ -9,13 +9,13 @@ public class RayCharles : MonoBehaviour
     [SerializeField]
     GameObject hitVFX;
     [SerializeField]
-    GameObject hufflePuffCup;
+    GameObject gauntRing;
 
     bool isAccioed = false;
 
     void Start()
     {
-        TestFeatures.OnTripleTap += DisableAnimator;
+        TestFeatures.OnTripleTap += ToggleAnimator;
         VoiceScript.accioing += Accioed;
     }
 
@@ -34,7 +34,7 @@ public class RayCharles : MonoBehaviour
                 {
 
                     Instantiate(hitVFX, gameObject.transform.position, Quaternion.identity);
-                    Instantiate(hufflePuffCup, gameObject.transform.position, Quaternion.identity);
+                    Instantiate(gauntRing, gameObject.transform.position, Quaternion.identity);
                     Destroy(gameObject);
 
                 }
@@ -47,15 +47,15 @@ public class RayCharles : MonoBehaviour
 
         if (isAccioed)
         {
-            if (transform.position != Camera.main.transform.position + Vector3.forward)
+            if (transform.position != Camera.main.transform.position + Camera.main.transform.forward)
             {
 
-                transform.position = Vector3.MoveTowards(transform.position, Camera.main.transform.position + Camera.main.transform.forward, 0.4f * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, Camera.main.transform.position + Camera.main.transform.forward, 0.5f * Time.deltaTime);
             }
         }
     }
 
-    public void DisableAnimator()
+    public void ToggleAnimator()
     {
         GetComponentInParent<Animator>().enabled = !GetComponentInParent<Animator>().enabled;
     }
@@ -65,6 +65,7 @@ public class RayCharles : MonoBehaviour
         if (string.Compare(accioed, "boccino", System.StringComparison.OrdinalIgnoreCase) == 0)
         {
             isAccioed = true;
+            ToggleAnimator();
         }
     }
     
