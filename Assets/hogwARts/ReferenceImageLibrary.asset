@@ -88,22 +88,22 @@ MonoBehaviour:
     m_Name: ciorellino
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
-      m_GuidLow: 5735287590956923164
-      m_GuidHigh: 13613020863601847996
+      m_GuidLow: 4805804457679229572
+      m_GuidHigh: 14595212263522288789
     m_SerializedTextureGuid:
-      m_GuidLow: 7824090704668132753
-      m_GuidHigh: 8291554701825924363
-    m_Size: {x: 0.127, y: 0.06945035}
+      m_GuidLow: 7625941113461310641
+      m_GuidHigh: 3297934925659433641
+    m_Size: {x: 0.115, y: 0.062180232}
     m_SpecifySize: 1
     m_Name: 10euro_fronte
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
-      m_GuidLow: 4792621525945724681
-      m_GuidHigh: 552028000327417779
+      m_GuidLow: 5040702377159465852
+      m_GuidHigh: 4285752707341465482
     m_SerializedTextureGuid:
       m_GuidLow: 18263313221549379425
       m_GuidHigh: 5467988320222380810
-    m_Size: {x: 0.12, y: 0.06567033}
+    m_Size: {x: 0.115, y: 0.06120968}
     m_SpecifySize: 1
     m_Name: 10euro_retro
     m_Texture: {fileID: 0}

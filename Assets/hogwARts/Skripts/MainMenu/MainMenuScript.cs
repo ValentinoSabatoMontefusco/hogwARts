@@ -193,43 +193,50 @@ public class MainMenuScript : MonoBehaviour
 
     public void DeathClick(GameObject source)
     {
-        if (latestDistance <= LocalizationLogic.UPDATE_INTERVAL)
+        if (latestDistance <= SPIN_THRESHOLD)
         {
             LoadScene("AR_Camera_Scene");
         }
         else
         {
-            StartCoroutine(bumpie(source));
+            StartCoroutine(Bumpie(source));
 
 
-            IEnumerator bumpie(GameObject bumped)
-            {
-
-                Vector3 scale = bumped.transform.localScale;
-                float duration = 0.3f;
-                float timeRemaining = duration;
-
-                while ((timeRemaining -= Time.deltaTime) > 0)
-                {
-                    if (timeRemaining > 0.2f)
-                    {
-                        bumped.transform.localScale = Vector3.Lerp(scale*0.88f, scale, (timeRemaining - 0.2f) / 0.1f);
-                    } else
-                    if (timeRemaining > 0.1f)
-                    {
-                        bumped.transform.localScale = Vector3.Lerp(scale * 1.15f, scale * 0.88f, (timeRemaining - 0.1f) / 0.1f);
-                    } else
-                    {
-                        bumped.transform.localScale = Vector3.Lerp(scale, scale*1.15f, timeRemaining / 0.1f);
-                    }
-
-                    yield return null;
-                }
-                
-            }
+            
+            
             
         }
 
+    }
+
+    public static IEnumerator Bumpie(GameObject bumped)
+    {
+        {
+
+            Vector3 scale = bumped.transform.localScale;
+            float duration = 0.3f;
+            float timeRemaining = duration;
+
+            while ((timeRemaining -= Time.deltaTime) > 0)
+            {
+                if (timeRemaining > 0.2f)
+                {
+                    bumped.transform.localScale = Vector3.Lerp(scale * 0.88f, scale, (timeRemaining - 0.2f) / 0.1f);
+                }
+                else
+                if (timeRemaining > 0.1f)
+                {
+                    bumped.transform.localScale = Vector3.Lerp(scale * 1.15f, scale * 0.88f, (timeRemaining - 0.1f) / 0.1f);
+                }
+                else
+                {
+                    bumped.transform.localScale = Vector3.Lerp(scale, scale * 1.15f, timeRemaining / 0.1f);
+                }
+
+                yield return null;
+            }
+
+        }
     }
 
     //IEnumerator checkLocation()

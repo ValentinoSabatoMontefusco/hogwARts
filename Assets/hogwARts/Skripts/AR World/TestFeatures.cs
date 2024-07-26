@@ -27,7 +27,7 @@ public class TestFeatures : MonoBehaviour
     [SerializeField]
     GameObject swordPrefab;
     [SerializeField]
-    GameObject swipeTrail;
+    GameObject toothPrefab;
     static bool equipped;
     public static Action OnTripleTap;
     
@@ -165,12 +165,20 @@ public class TestFeatures : MonoBehaviour
 
     public void SpawnEquip(string equip)
     {
-        if (string.Compare(equip, "spada", StringComparison.OrdinalIgnoreCase) != 0 || equipped)
+        if (equipped)
             return;
 
-        Instantiate(swordPrefab, GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>());
-        //swipeTrail.SetActive(true);
-        equipped = true;
+        if (string.Compare(equip, "spada", StringComparison.OrdinalIgnoreCase) == 0)
+        {
+            Instantiate(swordPrefab, GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>());
+            equipped = true;
+        }
+        if (string.Compare(equip, "dente", StringComparison.OrdinalIgnoreCase) == 0)
+        {
+            Instantiate(toothPrefab, GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>());
+            equipped = true;
+        }
+        
 
     }
 

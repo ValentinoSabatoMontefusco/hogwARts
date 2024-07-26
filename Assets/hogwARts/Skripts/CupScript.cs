@@ -6,6 +6,7 @@ public class CupScript : MonoBehaviour
 {
     Camera AR_Camera;
     bool beInPlace = false;
+    public int rotationSpeed;
     void Start()
     {
         AR_Camera = Camera.main;
@@ -14,7 +15,7 @@ public class CupScript : MonoBehaviour
     
     void Update()
     {
-        transform.Rotate(Vector3.up * 120 * Time.deltaTime);
+        transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
         if (!beInPlace)
         {
             if (Vector3.Distance(transform.position, (AR_Camera.transform.position + AR_Camera.transform.forward)) > 0.2f)

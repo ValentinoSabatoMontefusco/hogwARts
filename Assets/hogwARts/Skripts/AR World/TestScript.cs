@@ -93,6 +93,10 @@ public class TestScript : MonoBehaviour
                 return;
             } else
             {
+                if (chosenPrefab.name == "SalazarMedallion")
+                {
+                    latestPrefab = Instantiate(chosenPrefab, trackedImage.transform.position, Quaternion.identity);
+                }
                 if (!_instantiatedPrefabs.ContainsKey(imageName))
                 {
                     latestPrefab = Instantiate(chosenPrefab, trackedImage.transform);

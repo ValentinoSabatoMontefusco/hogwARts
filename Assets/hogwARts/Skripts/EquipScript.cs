@@ -21,11 +21,18 @@ public class EquipScript : MonoBehaviour
     Plane zPlane;
     Vector2 lastMousePosition = Vector2.zero;
 
+    bool isGryffindor;
+    HashSet<string> gryffindableHorcrux = new() { { "GauntRing" }, { "SalazarMedallion" }, { "Nagini" } };
+    HashSet<string> slytherinableHorcrux = new() { { "TomRiddleDiaryPage" }, { "HuffPuffCup" } };
+
     public bool followingTouch;
 
     public void Start()
     {
         followingTouch = false;
+        Debug.Log("Calling name on this equip returns: " + name);
+        if (string.Compare(name, "GryffindorSword", System.StringComparison.OrdinalIgnoreCase) == 0)
+            isGryffindor = true;
     }
 
     public void Update()
@@ -122,8 +129,30 @@ public class EquipScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Horcrux"))
         {
-            GameObject.Instantiate(hitVFX, other.transform.position, Quaternion.identity);
-            Destroy(other.gameObject);
+            if (!isGryffindor)
+            {
+                if (slytherinableHorcrux.Contains(other.name)) 
+                {
+                    GameObject.Instantiate(hitVFX, other.transform.position, Quaternion.identity);
+                    Destroy(other.gameObject);
+                }
+                else
+                {
+                    StartCoroutine(MainMenuScript.Bumpie(other.gameObject));
+                }
+            } else
+            {
+                if (gryffindableHorcrux.Contains(other.name)) 
+                {
+                    GameObject.Instantiate(hitVFX, other.transform.position, Quaternion.identity);
+                    Destroy(other.gameObject);
+                }
+                else
+                {
+                    StartCoroutine(MainMenuScript.Bumpie(other.gameObject));
+                }
+            }
+           
         }
     }
 }

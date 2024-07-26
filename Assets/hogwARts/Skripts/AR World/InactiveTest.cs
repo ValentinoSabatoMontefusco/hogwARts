@@ -5,37 +5,34 @@ using UnityEngine;
 public class InactiveTest : MonoBehaviour
 {
     public GameObject debugTest;
-    public GameObject gollumPrefab;
-    public GameObject silentPrefab;
+    public GameObject medallionPrefab;
+    public GameObject diaryPrefab;
     public GameObject goldenPrefab;
     public GameObject naginiPrefab;
+    public GameObject cupPrefab;
     public GameObject thisCamera;
 
     public TestFeatures supportingScript;
 
-    
 
-    
-
-
-    public void GollumTest()
+    public void MedallionTest()
     {
         Vector3 spawnPosition = thisCamera.transform.position + Vector3.forward;
-        Instantiate(gollumPrefab, spawnPosition, thisCamera.transform.rotation);
+        Instantiate(medallionPrefab, spawnPosition, thisCamera.transform.rotation);
         gameObject.SetActive(false);
     }
 
-    public void SHTest()
+    public void DiaryTest()
     {
         //TestFeatures.swipeEnabled = true;
-        supportingScript.SpawnEquip("spada");
+        //supportingScript.SpawnEquip("spada");
         Vector3 spawnPosition = thisCamera.transform.position + Vector3.forward;
-        Instantiate(silentPrefab, spawnPosition, thisCamera.transform.rotation);
+        Instantiate(diaryPrefab, spawnPosition, thisCamera.transform.rotation);
         gameObject.SetActive(false);
         
     }
 
-    public void RayTest()
+    public void SnitchTest()
     {
 
         Vector3 spawnPosition = thisCamera.transform.position + thisCamera.transform.forward;
@@ -47,6 +44,21 @@ public class InactiveTest : MonoBehaviour
     {
         Vector3 spawnPosition = thisCamera.transform.position + thisCamera.transform.forward;
         Instantiate(naginiPrefab, spawnPosition, thisCamera.transform.rotation);
+        gameObject.SetActive(false);
+    }
+
+    public void CupTest()
+    {
+        Vector3 spawnPosition = this.thisCamera.transform.position + thisCamera.transform.forward;
+        Instantiate(cupPrefab, spawnPosition, thisCamera.transform.rotation);
+        gameObject.SetActive(false);
+    }
+
+    public void ToothTest()
+    {
+        Vector3 spawnPosition = this.thisCamera.transform.position + thisCamera.transform.forward;
+        Instantiate(diaryPrefab, spawnPosition, thisCamera.transform.rotation);
+        supportingScript.SpawnEquip("dente");
         gameObject.SetActive(false);
     }
 }

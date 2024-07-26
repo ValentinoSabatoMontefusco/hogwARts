@@ -1,0 +1,11 @@
+Model Information:
+* title:	Tribal Tooth
+* source:	https://sketchfab.com/3d-models/tribal-tooth-3079dedcd1b94e2fb6cf411e9aa95497
+* author:	biancattaneo (https://sketchfab.com/biancattaneo)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Tribal Tooth" (https://sketchfab.com/3d-models/tribal-tooth-3079dedcd1b94e2fb6cf411e9aa95497) by biancattaneo (https://sketchfab.com/biancattaneo) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

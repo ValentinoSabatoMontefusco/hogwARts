@@ -48,10 +48,19 @@ public class VoiceScript : MonoBehaviour, ISpeechRecognizerPlugin
             if (matchFound)
                 break;
 
-            if (s.ToLower().Contains("accio spada"))
+            if (s.ToLower().Contains("accio spada") || Utilities.LevenshteinDistance(s.ToLower(), "accio ensis avis aureus") <= 3)
             {
                 accioing?.Invoke("spada");
                 //GetComponent<TestFeatures>().SpawnEquip("Spada");
+                matchFound = true;
+            }
+
+            if (matchFound)
+                break;
+
+            if (s.ToLower().Contains("accio dente") || Utilities.LevenshteinDistance(s.ToLower(), "accio morsus venenum draconis") <= 4)
+            {
+                accioing?.Invoke("dente");
                 matchFound = true;
             }
 
@@ -76,6 +85,13 @@ public class VoiceScript : MonoBehaviour, ISpeechRecognizerPlugin
     // Update is called once per frame
     void Update()
     {
+        
+    }
+
+    void OnDisable()
+    {
+        if(Application.platform == RuntimePlatform.Android)
+            SRP.StopListening();
         
     }
 }
