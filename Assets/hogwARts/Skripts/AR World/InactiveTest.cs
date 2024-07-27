@@ -17,6 +17,7 @@ public class InactiveTest : MonoBehaviour
 
     public void MedallionTest()
     {
+
         Vector3 spawnPosition = thisCamera.transform.position + Vector3.forward;
         Instantiate(medallionPrefab, spawnPosition, thisCamera.transform.rotation);
         gameObject.SetActive(false);
@@ -34,7 +35,7 @@ public class InactiveTest : MonoBehaviour
 
     public void SnitchTest()
     {
-
+        supportingScript.SpawnEquip("spada");
         Vector3 spawnPosition = thisCamera.transform.position + thisCamera.transform.forward;
         Instantiate(goldenPrefab, spawnPosition, thisCamera.transform.rotation);
         gameObject.SetActive(false);
@@ -42,6 +43,7 @@ public class InactiveTest : MonoBehaviour
 
     public void NaginiTest()
     {
+
         Vector3 spawnPosition = thisCamera.transform.position + thisCamera.transform.forward;
         Instantiate(naginiPrefab, spawnPosition, thisCamera.transform.rotation);
         gameObject.SetActive(false);
@@ -49,6 +51,7 @@ public class InactiveTest : MonoBehaviour
 
     public void CupTest()
     {
+        supportingScript.SpawnEquip("spada");
         Vector3 spawnPosition = this.thisCamera.transform.position + thisCamera.transform.forward;
         Instantiate(cupPrefab, spawnPosition, thisCamera.transform.rotation);
         gameObject.SetActive(false);

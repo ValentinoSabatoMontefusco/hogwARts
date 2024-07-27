@@ -248,7 +248,7 @@ PrefabInstance:
     - target: {fileID: 1500322242506516793, guid: 8ecf111a70e7b9745a9300bb30b9195c,
         type: 3}
       propertyPath: m_Name
-      value: HuffPuffCup
+      value: HuffPuffCup(Clone)
       objectReference: {fileID: 0}
     - target: {fileID: 1500322242506516793, guid: 8ecf111a70e7b9745a9300bb30b9195c,
         type: 3}

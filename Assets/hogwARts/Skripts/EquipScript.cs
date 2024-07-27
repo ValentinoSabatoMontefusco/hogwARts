@@ -31,7 +31,7 @@ public class EquipScript : MonoBehaviour
     {
         followingTouch = false;
         Debug.Log("Calling name on this equip returns: " + name);
-        if (string.Compare(name, "GryffindorSword", System.StringComparison.OrdinalIgnoreCase) == 0)
+        if (string.Compare(name, "GryffindorSword(Clone)", System.StringComparison.OrdinalIgnoreCase) == 0)
             isGryffindor = true;
     }
 
@@ -131,7 +131,7 @@ public class EquipScript : MonoBehaviour
         {
             if (!isGryffindor)
             {
-                if (slytherinableHorcrux.Contains(other.name)) 
+                if (slytherinableHorcrux.Contains(other.name.Substring(0, other.name.Length - "(Clone)".Length))) 
                 {
                     GameObject.Instantiate(hitVFX, other.transform.position, Quaternion.identity);
                     Destroy(other.gameObject);
@@ -142,7 +142,7 @@ public class EquipScript : MonoBehaviour
                 }
             } else
             {
-                if (gryffindableHorcrux.Contains(other.name)) 
+                if (gryffindableHorcrux.Contains(other.name.Substring(0, other.name.Length - "(Clone)".Length))) 
                 {
                     GameObject.Instantiate(hitVFX, other.transform.position, Quaternion.identity);
                     Destroy(other.gameObject);
