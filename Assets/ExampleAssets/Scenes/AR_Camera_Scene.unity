@@ -745,8 +745,10 @@ MonoBehaviour:
     type: 3}
   medallionPrefab: {fileID: 2475787102489851627, guid: 6ebf747a26b780f4dbdf01fa7a76ce53,
     type: 3}
-  euroDevinettePrefab: {fileID: 0}
-  diademaPrefab: {fileID: 0}
+  euroDevinettePrefab: {fileID: 8327851722869498063, guid: 705c93944d4956343bfe7466c38cab65,
+    type: 3}
+  diademaPrefab: {fileID: 6074993524572514036, guid: 87f53f07d69c7e54996de19e9a73ba2f,
+    type: 3}
   diarioPrefab: {fileID: 5256227324920573449, guid: aed54e86202d6c7409d6f618951752a8,
     type: 3}
   hufflepuffCup: {fileID: 4709846391592186135, guid: ef5288d7f1c1f8e4b89697b7bf3a4a67,
