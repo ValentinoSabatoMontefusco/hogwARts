@@ -44,13 +44,22 @@ public class RayCharles : MonoBehaviour
                 Debug.Log("Missed"!);
             }
         }
+        if (Input.GetKeyDown(KeyCode.KeypadEnter))
+        {
+            isAccioed = !isAccioed;
+            ToggleAnimator();
+        }
 
         if (isAccioed)
         {
+            //if (transform.rotation != Camera.main.transform.rotation)
+            //{
+            //    transform.rotation = Quaternion.Lerp(transform.rotation, Camera.main.transform.rotation, Time.deltaTime);
+            //}
             if (transform.position != Camera.main.transform.position + Camera.main.transform.forward)
             {
 
-                transform.position = Vector3.MoveTowards(transform.position, Camera.main.transform.position + Camera.main.transform.forward, 0.5f * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, Camera.main.transform.position + Camera.main.transform.forward * 0.3f, 0.7f * Time.deltaTime);
             }
         }
     }

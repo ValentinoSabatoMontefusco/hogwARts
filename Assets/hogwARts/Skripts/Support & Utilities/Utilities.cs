@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class Utilities
 {
-    public static string EarthDistanceFormattedString (float distance)
+    public static string EarthDistanceFormattedString(float distance)
     {
         if (distance > 1000)
             return (distance / 1000).ToString("F2") + " km";
@@ -14,7 +14,7 @@ public static class Utilities
 
     public static float HeavertineDistanceM(Vector2 sourcePos, Vector2 targetPos)
     {
-        
+
         float earthRadius = 6371000f; // Earth radius in meters
         float dLat = Mathf.Deg2Rad * (targetPos.x - sourcePos.x);
         float dLon = Mathf.Deg2Rad * (targetPos.y - sourcePos.y);
@@ -164,6 +164,18 @@ public static class Utilities
         // return result
         return matrix[source1Length, source2Length];
     }
+
+
+    public static float DistanceFromPointToPlane(Vector3 point, Vector3 planeNormal, Vector3 planePoint)
+    {
+        // Normalize the plane normal vector to ensure accurate calculations
+        planeNormal.Normalize();
+
+        // Calculate the vector from the point on the plane to the given point
+        Vector3 pointToPlanePoint = point - planePoint;
+
+        // Calculate the distance using the dot product
+        return Mathf.Abs(Vector3.Dot(planeNormal, pointToPlanePoint));
+    }
+
 }
-
-

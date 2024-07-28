@@ -1,0 +1,3 @@
+{"gps_position": {"x" : 40.95997349821017,  "y" : 14.882722317582859}, "name" : "casa r'a fraceta"},
+{"gps_position": {"x" : 40.96268337497131,  "y" : 14.88372032379637}, "name" : "'o dragos flai"},
+{"gps_position": {"x" : 40.96516661760738,  "y" : 14.885441230427364}, "name" : "villa 'e Mundifargione"}

@@ -10,6 +10,7 @@ public class InactiveTest : MonoBehaviour
     public GameObject goldenPrefab;
     public GameObject naginiPrefab;
     public GameObject cupPrefab;
+    public GameObject diademPrefab;
     public GameObject thisCamera;
 
     public TestFeatures supportingScript;
@@ -43,9 +44,9 @@ public class InactiveTest : MonoBehaviour
 
     public void NaginiTest()
     {
-
+        
         Vector3 spawnPosition = thisCamera.transform.position + thisCamera.transform.forward;
-        Instantiate(naginiPrefab, spawnPosition, thisCamera.transform.rotation);
+        Instantiate(naginiPrefab, spawnPosition, Quaternion.LookRotation(this.transform.forward, Vector3.up));
         gameObject.SetActive(false);
     }
 
@@ -57,11 +58,11 @@ public class InactiveTest : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void ToothTest()
+    public void DiademTest()
     {
         Vector3 spawnPosition = this.thisCamera.transform.position + thisCamera.transform.forward;
-        Instantiate(diaryPrefab, spawnPosition, thisCamera.transform.rotation);
-        supportingScript.SpawnEquip("dente");
+        Instantiate(diademPrefab, spawnPosition, thisCamera.transform.rotation);
+        //supportingScript.SpawnEquip("dente");
         gameObject.SetActive(false);
     }
 }

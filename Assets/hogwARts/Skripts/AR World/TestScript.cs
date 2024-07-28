@@ -30,6 +30,11 @@ public class TestScript : MonoBehaviour
     public GameObject mercadantePrefab;
     public GameObject boccinoPrefab;
     public GameObject medallionPrefab;
+    public GameObject euroDevinettePrefab;
+    public GameObject diademaPrefab;
+    public GameObject diarioPrefab;
+    public GameObject hufflepuffCup;
+
 
     public Dictionary<string, GameObject> imageToPrefab;
 
@@ -53,7 +58,8 @@ public class TestScript : MonoBehaviour
         imageToPrefab = new Dictionary<string, GameObject>()
                 { { "costapertina",  costaPrefab}, {"taragozza", mercadantePrefab }, {"caccaviello_rosso1", naginiPrefab },
                 {"caccaviello_rosso2", naginiPrefab }, {"anceli_mercatone", naginiPrefab }, {"effigie_foresta", naginiPrefab },
-                {"ciorellino", boccinoPrefab }, {"10euro_fronte", medallionPrefab }, {"10euro_retro", medallionPrefab } };
+                {"ciorellino", boccinoPrefab }, {"10euro_fronte", medallionPrefab }, {"10euro_retro", medallionPrefab }, {"CroceVerdeNera", euroDevinettePrefab},
+                {"UltimaCena", boccinoPrefab }, {"MuseoDellaMemoria", diademaPrefab }, {"FantasmaScuola", diarioPrefab }, {"StemmaFontana", hufflepuffCup } };
 
         latestTracked.text += "TestScript awakened...";
 
@@ -91,13 +97,14 @@ public class TestScript : MonoBehaviour
             {
                 latestTracked.text = "Error with tracking!";
                 return;
-            } else
+            }
+            else
             {
                 if (chosenPrefab.name == "SalazarMedallion")
                 {
                     latestPrefab = Instantiate(chosenPrefab, trackedImage.transform.position, Quaternion.identity);
                 }
-                if (!_instantiatedPrefabs.ContainsKey(imageName))
+                else if (!_instantiatedPrefabs.ContainsKey(chosenPrefab.name))
                 {
                     latestPrefab = Instantiate(chosenPrefab, trackedImage.transform);
                     latestTracked.text = "Latest Tracked: " + imageName + " " + formattedPosition(trackedImage.transform);
@@ -106,6 +113,7 @@ public class TestScript : MonoBehaviour
 
                 }
             }
+                
             return;
             //foreach (var curPrefab in ArPrefabs)
             //{

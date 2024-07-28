@@ -679,9 +679,10 @@ GameObject:
   - component: {fileID: 388525032}
   - component: {fileID: 388525034}
   - component: {fileID: 388525035}
+  - component: {fileID: 388525036}
   m_Layer: 0
   m_Name: AR Session Origin
-  m_TagString: Untagged
+  m_TagString: ARControllers
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -734,15 +735,21 @@ MonoBehaviour:
   latestInstGO: {fileID: 782628375}
   diaryPrefab: {fileID: 5256227324920573449, guid: aed54e86202d6c7409d6f618951752a8,
     type: 3}
-  naginiPrefab: {fileID: 3510513389364172453, guid: be844094c6423074ca753409e1f28aba,
+  naginiPrefab: {fileID: 4477495542435203126, guid: 97dccfcdc78c2014a9da037b3b779291,
     type: 3}
   costaPrefab: {fileID: 8446412627995582636, guid: fd31cbc2c9a5736498de62d07f63c2e7,
     type: 3}
   mercadantePrefab: {fileID: 8598512502179678704, guid: 0f14900f24067134694bc0e61560cab6,
     type: 3}
-  boccinoPrefab: {fileID: 3504051506429806306, guid: de25f9c4eca1bb1449361cfac8523c47,
+  boccinoPrefab: {fileID: 6949224072469345649, guid: 04bec0b1844ad7240a544b9ddfc3d19a,
     type: 3}
   medallionPrefab: {fileID: 2475787102489851627, guid: 6ebf747a26b780f4dbdf01fa7a76ce53,
+    type: 3}
+  euroDevinettePrefab: {fileID: 0}
+  diademaPrefab: {fileID: 0}
+  diarioPrefab: {fileID: 5256227324920573449, guid: aed54e86202d6c7409d6f618951752a8,
+    type: 3}
+  hufflepuffCup: {fileID: 4709846391592186135, guid: ef5288d7f1c1f8e4b89697b7bf3a4a67,
     type: 3}
 --- !u!114 &388525033
 MonoBehaviour:
@@ -758,7 +765,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SerializedLibrary: {fileID: 11400000, guid: b91db3fb9fa88264eacc5d591b1944d8,
     type: 2}
-  m_MaxNumberOfMovingImages: 0
+  m_MaxNumberOfMovingImages: 1
   m_TrackedImagePrefab: {fileID: 0}
 --- !u!114 &388525034
 MonoBehaviour:
@@ -796,6 +803,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugText: {fileID: 782628377}
+--- !u!114 &388525036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 388525029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1760703bbd54c04488a8d10600262ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PlanePrefab: {fileID: 0}
+  m_DetectionMode: 1
 --- !u!1 &436554200
 GameObject:
   m_ObjectHideFlags: 0
@@ -1083,7 +1104,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Dente
+  m_text: Diadem
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1808,7 +1829,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1716085814}
         m_TargetAssemblyTypeName: InactiveTest, Assembly-CSharp
-        m_MethodName: ToothTest
+        m_MethodName: DiademTest
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2294,11 +2315,13 @@ MonoBehaviour:
     type: 3}
   diaryPrefab: {fileID: 5256227324920573449, guid: aed54e86202d6c7409d6f618951752a8,
     type: 3}
-  goldenPrefab: {fileID: 3504051506429806306, guid: de25f9c4eca1bb1449361cfac8523c47,
+  goldenPrefab: {fileID: 6949224072469345649, guid: 04bec0b1844ad7240a544b9ddfc3d19a,
     type: 3}
   naginiPrefab: {fileID: 4477495542435203126, guid: 97dccfcdc78c2014a9da037b3b779291,
     type: 3}
   cupPrefab: {fileID: 4709846391592186135, guid: ef5288d7f1c1f8e4b89697b7bf3a4a67,
+    type: 3}
+  diademPrefab: {fileID: 6074993524572514036, guid: 87f53f07d69c7e54996de19e9a73ba2f,
     type: 3}
   thisCamera: {fileID: 22732919}
   supportingScript: {fileID: 388525034}
