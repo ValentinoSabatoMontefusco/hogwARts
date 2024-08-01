@@ -10,6 +10,7 @@ using UnityEngine.XR.ARSubsystems;
 public class TestScript : MonoBehaviour
 {
     // Reference to AR tracked image manager component
+    [SerializeField]
     private ARTrackedImageManager _trackedImagesManager;
 
     // List of prefabs to instantiate - these should be named the same
@@ -35,6 +36,15 @@ public class TestScript : MonoBehaviour
     public GameObject diarioPrefab;
     public GameObject hufflepuffCup;
 
+    public XRReferenceImageLibrary mercatoneLibrary;
+    public XRReferenceImageLibrary fontanaLibrary;
+    public XRReferenceImageLibrary fantasmaLibrary;
+    public XRReferenceImageLibrary museoLibrary;
+    public XRReferenceImageLibrary croceverdeneraLibrary;
+    public XRReferenceImageLibrary ultimacenaLibrary;
+    public XRReferenceImageLibrary defaultLibrary;
+
+
 
     public Dictionary<string, GameObject> imageToPrefab;
 
@@ -52,7 +62,12 @@ public class TestScript : MonoBehaviour
     //  var newPrefab = Instantiate(curPrefab, trackedImage.transform);
     void Awake()
     {
-        _trackedImagesManager = GetComponent<ARTrackedImageManager>();
+        if (_trackedImagesManager == null)
+        {
+            _trackedImagesManager = GetComponent<ARTrackedImageManager>();
+        }
+        
+        
         latestTracked = latestTrackedGO.GetComponent<TextMeshProUGUI>();
         latestInst = latestInstGO.GetComponent<TextMeshProUGUI>();
         imageToPrefab = new Dictionary<string, GameObject>()
@@ -74,8 +89,77 @@ public class TestScript : MonoBehaviour
     }
     private void OnEnable()
     {
+        Debug.Log("Started TestScript OnEnable()");
         _trackedImagesManager.trackedImagesChanged += OnTrackedImagesChanged;
+        Debug.Log("Added callback to imagesChanged event");
+        if (InterSceneData.currentNearestLocation == null)
+            return;
+        Debug.Log("InterScenData: current location name -> " + InterSceneData.currentNearestLocation.Name);
         
+        try
+        {
+
+            _trackedImagesManager.enabled = false;
+            Debug.Log("ImagesManager disabled, even though it should've already been so");
+            if (InterSceneData.chosenLibrary != null || InterSceneData.chosenLibrary != "Current Location")
+            {
+                Debug.Log("Menù a tendina non currentlokesionesco");
+                switch(InterSceneData.chosenLibrary)
+                {
+                    case "UltimaCena": _trackedImagesManager.referenceLibrary = ultimacenaLibrary; break;
+                    case "StemmaFontana": _trackedImagesManager.referenceLibrary = fontanaLibrary; break;
+                    case "FantasmaScuola": _trackedImagesManager.referenceLibrary = fantasmaLibrary; break;
+                    case "AnceliMercatone": _trackedImagesManager.referenceLibrary = mercatoneLibrary; break;
+                    case "MuseoDellaMemoria": _trackedImagesManager.referenceLibrary = museoLibrary; break;
+                    case "CroceVerdeNera": _trackedImagesManager.referenceLibrary = croceverdeneraLibrary; break;
+                    default: _trackedImagesManager.referenceLibrary = defaultLibrary; break;
+                }
+                latestInst.text = "Current Library = " + _trackedImagesManager.referenceLibrary.ToString();
+                Debug.Log("Libreria scelta tramite menù a tendina: " + _trackedImagesManager.referenceLibrary.ToString());
+            } else
+            {
+                Debug.Log("Scegliendo libreria per prossimità");
+                switch (InterSceneData.currentNearestLocation.Name)
+                { 
+                    case "UltimaCena":
+                        _trackedImagesManager.referenceLibrary = ultimacenaLibrary;
+                        latestInst.text = "NearestLocation = " + InterSceneData.currentNearestLocation.Name; break;
+                    case "AnceliMercatone":
+                        _trackedImagesManager.referenceLibrary = mercatoneLibrary;
+                        latestInst.text = "NearestLocation = " + InterSceneData.currentNearestLocation.Name; break;
+                    case "StemmaFontana":
+                        _trackedImagesManager.referenceLibrary = fontanaLibrary;
+                        latestInst.text = "NearestLocation = " + InterSceneData.currentNearestLocation.Name; break;
+                    case "Quarto beach arena":
+                    case "FantasmaScuola":
+                        _trackedImagesManager.referenceLibrary = fantasmaLibrary;
+                        latestInst.text = "NearestLocation = " + InterSceneData.currentNearestLocation.Name; break;
+                    case "MuseoDellaMemoria":
+                        _trackedImagesManager.referenceLibrary = museoLibrary;
+                        latestInst.text = "NearestLocation = " + InterSceneData.currentNearestLocation.Name; break;
+                    case "PAM nderro casa":
+                    case "CroceVerdeNera":
+                        _trackedImagesManager.referenceLibrary = croceverdeneraLibrary;
+                        latestInst.text = "NearestLocation = " + InterSceneData.currentNearestLocation.Name; break;
+                    default:
+                        _trackedImagesManager.referenceLibrary = defaultLibrary;
+                        latestInst.text = "NearestLocation = " + InterSceneData.currentNearestLocation.Name; break;
+                }
+                Debug.Log("Libreria scelta tramite prossimità: " + _trackedImagesManager.referenceLibrary.ToString());
+            }
+
+            Debug.Log("Tentativo di abilitazione ImageManager");
+            _trackedImagesManager.enabled = true;
+            Debug.Log("Manager abilitato");
+
+        }
+        catch (Exception e)
+        {
+            latestInst.text = e.Message;
+            Debug.Log(e.Message);
+        }
+
+
     }
     private void OnDisable()
     {
@@ -84,7 +168,7 @@ public class TestScript : MonoBehaviour
     private void OnTrackedImagesChanged(ARTrackedImagesChangedEventArgs eventArgs)
     {
         GameObject latestPrefab;
-        latestTracked.text = "OnTrackedImagesChanged called";
+        //latestTracked.text = "OnTrackedImagesChanged called";
         foreach (var trackedImage in eventArgs.added)
         {
             // Get the name of the reference image
@@ -100,13 +184,19 @@ public class TestScript : MonoBehaviour
             }
             else
             {
+
                 if (chosenPrefab.name == "SalazarMedallion")
                 {
                     latestPrefab = Instantiate(chosenPrefab, trackedImage.transform.position, Quaternion.identity);
+                } else if (trackedImage.referenceImage.name == "CroceVerdeNera" || chosenPrefab.name == "Devinette")
+                {
+                    euroDevinettePrefab.SetActive(true);
+                    latestTracked.text = "Devinette?";
                 }
                 else if (!_instantiatedPrefabs.ContainsKey(chosenPrefab.name))
                 {
-                    latestPrefab = Instantiate(chosenPrefab, trackedImage.transform);
+                    latestPrefab = Instantiate(chosenPrefab, trackedImage.transform.position, trackedImage.transform.rotation);
+                    _instantiatedPrefabs.Add(trackedImage.referenceImage.name, latestPrefab);
                     latestTracked.text = "Latest Tracked: " + imageName + " " + formattedPosition(trackedImage.transform);
                     latestInst.text = "Latest Inst: " + chosenPrefab.name + " " + formattedPosition(latestPrefab.transform);
 

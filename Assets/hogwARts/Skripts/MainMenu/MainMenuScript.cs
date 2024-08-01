@@ -40,6 +40,7 @@ public class MainMenuScript : MonoBehaviour
     public void Awake()
     {
         latestDistance = float.MaxValue;
+        InterSceneData.currentNearestLocation = myRoom;
         isMenuDebug = true;
         locLogic = GetComponent<LocalizationLogic>();
         locLogic.onLocationCheck.AddListener(updateUI);
@@ -115,6 +116,7 @@ public class MainMenuScript : MonoBehaviour
     private void updateUI(LocationInfoPackage locInfo)
     {
         latestDistance = locInfo.Distance;
+
         Deathly.GetComponent<Animator>().SetFloat("latestDistance", latestDistance);
         if (isMenuDebug)
         {

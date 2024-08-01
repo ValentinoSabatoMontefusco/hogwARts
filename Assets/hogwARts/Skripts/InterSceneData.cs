@@ -5,6 +5,7 @@ using UnityEngine;
 public static class InterSceneData
 {
     public static GPSCoordinate currentNearestLocation = null;
+    public static string chosenLibrary = "Current Location";
 
     public static Color GetColorByLocation(GPSCoordinate location)
     {
@@ -14,6 +15,11 @@ public static class InterSceneData
             return newColor;
         return Color.black;
 
+    }
+
+    public static void changeLibrary(string lib)
+    {
+        chosenLibrary = lib;
     }
 
     private static Dictionary<string, Color> colourz = new Dictionary<string, Color> { { "stanza di Valentino", Color.red }, {"PAM nderro casa", Color.green }, { "villa comunale", Color.blue } };

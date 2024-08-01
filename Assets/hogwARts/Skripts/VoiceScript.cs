@@ -66,6 +66,22 @@ public class VoiceScript : MonoBehaviour, ISpeechRecognizerPlugin
 
             if (matchFound)
                 break;
+
+            if (Utilities.LevenshteinDistance(s.ToLower(), "veniat ardemonium metus mundi") <= 6)
+            {
+                sprach?.Invoke("ardemonio");
+                matchFound = true;
+                
+            }
+
+            if (matchFound)
+                break;
+
+            if (Utilities.LevenshteinDistance(s.ToLower(), "questa è l'ultima caccia") <= 2)
+            {
+                sprach?.Invoke("ultimacaccia");
+                break;
+            }
         }
     }
 
@@ -73,12 +89,12 @@ public class VoiceScript : MonoBehaviour, ISpeechRecognizerPlugin
     void Start()
     {
         
-        debugText.text = "VoiceScript avviato";
+        
         SRP = SpeechRecognizerPlugin.GetPlatformPluginVersion(this.gameObject.name);
         SRP.SetContinuousListening(true);
         SRP.StartListening();
-        debugText.text = "Tentativo di avvio fatto";
-        debugText.text = "Ascolto in corso? " + (SRP.isListening() ? "Yes!" : "Nay... :c");
+        //debugText.text = "Tentativo di avvio fatto";
+        //debugText.text = "Ascolto in corso? " + (SRP.isListening() ? "Yes!" : "Nay... :c");
 
     }
 
@@ -90,8 +106,8 @@ public class VoiceScript : MonoBehaviour, ISpeechRecognizerPlugin
 
     void OnDisable()
     {
-        if(Application.platform == RuntimePlatform.Android)
-            SRP.StopListening();
+        //if(Application.platform == RuntimePlatform.Android)
+        //    SRP.StopListening();
         
     }
 }

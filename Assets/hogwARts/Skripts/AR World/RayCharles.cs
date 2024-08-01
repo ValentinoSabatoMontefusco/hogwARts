@@ -17,6 +17,7 @@ public class RayCharles : MonoBehaviour
     {
         TestFeatures.OnTripleTap += ToggleAnimator;
         VoiceScript.accioing += Accioed;
+        VoiceScript.sprach += OpenSnitch;
     }
 
     // Update is called once per frame
@@ -32,10 +33,8 @@ public class RayCharles : MonoBehaviour
             {
                 if (hit.collider.gameObject == gameObject)
                 {
-
-                    Instantiate(hitVFX, gameObject.transform.position, Quaternion.identity);
-                    Instantiate(gauntRing, gameObject.transform.position, Quaternion.identity);
-                    Destroy(gameObject);
+                    MainMenuScript.Bumpie(hit.collider.gameObject);
+                    
 
                 }
                 Debug.Log("Hit!");
@@ -78,4 +77,12 @@ public class RayCharles : MonoBehaviour
         }
     }
     
+    private void OpenSnitch(string sprach)
+    {
+        if (sprach != "ultimacaccia") return;
+
+        Instantiate(hitVFX, gameObject.transform.position, Quaternion.identity);
+        Instantiate(gauntRing, gameObject.transform.position, Quaternion.identity);
+        Destroy(gameObject);
+    }
 }

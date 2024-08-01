@@ -76,7 +76,7 @@ public class EquipScript : MonoBehaviour
             animator.enabled = false;
             GetComponent<Collider>().enabled = true;
             float rayDistance;
-            zPlane = new Plane(Camera.main.transform.forward * -1, Camera.main.transform.position + Camera.main.transform.forward * 1.5f);
+            zPlane = new Plane(Camera.main.transform.forward * -1, Camera.main.transform.position + Camera.main.transform.forward);
             
             zPlane.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out rayDistance);
             Debug.Log("rayDistance = " + rayDistance);
@@ -133,6 +133,7 @@ public class EquipScript : MonoBehaviour
             {
                 if (slytherinableHorcrux.Contains(other.name.Substring(0, other.name.Length - "(Clone)".Length))) 
                 {
+                   
                     GameObject.Instantiate(hitVFX, other.transform.position, Quaternion.identity);
                     Destroy(other.gameObject);
                 }

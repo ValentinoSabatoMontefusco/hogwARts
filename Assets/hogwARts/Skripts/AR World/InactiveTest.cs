@@ -5,7 +5,7 @@ using UnityEngine;
 public class InactiveTest : MonoBehaviour
 {
     public GameObject debugTest;
-    public GameObject medallionPrefab;
+    public GameObject devinettePrefab;
     public GameObject diaryPrefab;
     public GameObject goldenPrefab;
     public GameObject naginiPrefab;
@@ -16,11 +16,12 @@ public class InactiveTest : MonoBehaviour
     public TestFeatures supportingScript;
 
 
-    public void MedallionTest()
+    public void DevinetteTest()
     {
 
-        Vector3 spawnPosition = thisCamera.transform.position + Vector3.forward;
-        Instantiate(medallionPrefab, spawnPosition, thisCamera.transform.rotation);
+        //Vector3 spawnPosition = thisCamera.transform.position + Vector3.forward;
+        //Instantiate(medallionPrefab, spawnPosition, thisCamera.transform.rotation);
+        devinettePrefab.SetActive(true);
         gameObject.SetActive(false);
     }
 
@@ -36,7 +37,7 @@ public class InactiveTest : MonoBehaviour
 
     public void SnitchTest()
     {
-        supportingScript.SpawnEquip("spada");
+        //supportingScript.SpawnEquip("spada");
         Vector3 spawnPosition = thisCamera.transform.position + thisCamera.transform.forward;
         Instantiate(goldenPrefab, spawnPosition, thisCamera.transform.rotation);
         gameObject.SetActive(false);
@@ -52,7 +53,7 @@ public class InactiveTest : MonoBehaviour
 
     public void CupTest()
     {
-        supportingScript.SpawnEquip("spada");
+        //supportingScript.SpawnEquip("spada");
         Vector3 spawnPosition = this.thisCamera.transform.position + thisCamera.transform.forward;
         Instantiate(cupPrefab, spawnPosition, thisCamera.transform.rotation);
         gameObject.SetActive(false);
