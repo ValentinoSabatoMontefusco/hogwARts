@@ -11,7 +11,8 @@
 {"gps_position": {"x" : 40.9677935,        "y" : 14.9035817}, "name" : "MuseoDellaMemoria"},
 {"gps_position": {"x" : 40.962185,         "y" : 14.8838457}, "name" : "FantasmaScuola"},
 {"gps_position": {"x" : 40.963529027086295,"y" : 14.8845374198792}, "name" : "StemmaFontana"},
-{"gps_position": {"x" : 40.96189842259889, "y" : 14.880624507578862}, "name" : "AnceliMercatone"}
+{"gps_position": {"x" : 40.96207543723534,  "y" : 14.881364839581597}, "name" : "AnceliMercatone"},
+{"gps_position": {"x" : 40.96085255861194, "y" : 14.877888696669567}, "name" : "ChitarraVerde"}
 
 ]
 }

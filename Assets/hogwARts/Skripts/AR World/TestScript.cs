@@ -74,7 +74,7 @@ public class TestScript : MonoBehaviour
                 { { "costapertina",  costaPrefab}, {"taragozza", mercadantePrefab }, {"caccaviello_rosso1", naginiPrefab },
                 {"caccaviello_rosso2", naginiPrefab }, {"anceli_mercatone", naginiPrefab }, {"effigie_foresta", naginiPrefab },
                 {"ciorellino", boccinoPrefab }, {"10euro_fronte", medallionPrefab }, {"10euro_retro", medallionPrefab }, {"CroceVerdeNera", euroDevinettePrefab},
-                {"UltimaCena", boccinoPrefab }, {"MuseoDellaMemoria", diademaPrefab }, {"FantasmaScuola", diarioPrefab }, {"StemmaFontana", hufflepuffCup } };
+                {"UltimaCena", boccinoPrefab }, {"MuseoDellaMemoria", diademaPrefab }, {"FantasmaScuola", diarioPrefab }, {"StemmaFontana", hufflepuffCup }, {"ChitarraVerde", euroDevinettePrefab } };
 
         latestTracked.text += "TestScript awakened...";
 
@@ -188,7 +188,7 @@ public class TestScript : MonoBehaviour
                 if (chosenPrefab.name == "SalazarMedallion")
                 {
                     latestPrefab = Instantiate(chosenPrefab, trackedImage.transform.position, Quaternion.identity);
-                } else if (trackedImage.referenceImage.name == "CroceVerdeNera" || chosenPrefab.name == "Devinette")
+                } else if (trackedImage.referenceImage.name == "CroceVerdeNera" || chosenPrefab.name == "Devinette" || trackedImage.referenceImage.name == "ChitarraVerde")
                 {
                     euroDevinettePrefab.SetActive(true);
                     latestTracked.text = "Devinette?";
@@ -197,7 +197,7 @@ public class TestScript : MonoBehaviour
                 {
                     latestPrefab = Instantiate(chosenPrefab, trackedImage.transform.position, trackedImage.transform.rotation);
                     _instantiatedPrefabs.Add(trackedImage.referenceImage.name, latestPrefab);
-                    latestTracked.text = "Latest Tracked: " + imageName + " " + formattedPosition(trackedImage.transform);
+                    latestTracked.text = "Latest Tracked: " + trackedImage.name + " " + formattedPosition(trackedImage.transform);
                     latestInst.text = "Latest Inst: " + chosenPrefab.name + " " + formattedPosition(latestPrefab.transform);
 
 
@@ -241,7 +241,7 @@ public class TestScript : MonoBehaviour
             // }
             // }
             // }
-            _instantiatedPrefabs[trackedImage.referenceImage.name].SetActive(trackedImage.trackingState == TrackingState.Tracking);
+            //_instantiatedPrefabs[trackedImage.referenceImage.name].SetActive(trackedImage.trackingState == TrackingState.Tracking);
             latestTracked.text = "Latest Tracked: " + trackedImage.name + " " + formattedPosition(trackedImage.transform);
             latestInst.text = "Latest Inst: " + _instantiatedPrefabs[trackedImage.name].name + " " + formattedPosition(_instantiatedPrefabs[trackedImage.name].transform);
         }
@@ -250,9 +250,9 @@ public class TestScript : MonoBehaviour
         foreach (var trackedImage in eventArgs.removed)
         {
             // Destroy its prefab
-            Destroy(_instantiatedPrefabs[trackedImage.referenceImage.name]);
+            //Destroy(_instantiatedPrefabs[trackedImage.referenceImage.name]);
             // Also remove the instance from our array
-            _instantiatedPrefabs.Remove(trackedImage.referenceImage.name);
+            //_instantiatedPrefabs.Remove(trackedImage.referenceImage.name);
             // Or, simply set the prefab instance to inactive
             //_instantiatedPrefabs[trackedImage.referenceImage.name].SetActive(false);
         }

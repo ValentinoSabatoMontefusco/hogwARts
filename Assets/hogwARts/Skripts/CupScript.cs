@@ -9,8 +9,10 @@ public class CupScript : MonoBehaviour
     public int rotationSpeed;
     public GameObject fireEffects;
     public GameObject diadem;
+    bool rotate;
     void Start()
     {
+        rotate = true;
         AR_Camera = Camera.main;
         if (gameObject.name.Equals("CorinnaDiadem(Clone)"))
         {
@@ -22,7 +24,8 @@ public class CupScript : MonoBehaviour
 
     void Update()
     {
-        transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
+        if (rotate)
+            transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
         if (!beInPlace)
         {
             if (Vector3.Distance(transform.position, (AR_Camera.transform.position + AR_Camera.transform.forward)) > 0.2f || transform.position.y < 0)
@@ -35,15 +38,21 @@ public class CupScript : MonoBehaviour
                 beInPlace = true;
 
         }
+
+        if (Input.GetKey(KeyCode.KeypadEnter))
+            BurnDiadem("ardemonio");
         
     }
 
     void BurnDiadem(string sprach)
     {
+        rotate = false;
+        transform.LookAt(AR_Camera.transform.position);
         if (sprach != "ardemonio")
             return;
-
-        fireEffects.SetActive(true);
+        if (fireEffects != null) 
+            fireEffects.SetActive(true);
+        GetComponent<Animator>().enabled = true;
 
     }
 
@@ -52,5 +61,9 @@ public class CupScript : MonoBehaviour
         diadem.SetActive(false);
     }
 
+    public void DestroyPhone()
+    {
+        TestFeatures.DestroyApp();
+    }
 
 }

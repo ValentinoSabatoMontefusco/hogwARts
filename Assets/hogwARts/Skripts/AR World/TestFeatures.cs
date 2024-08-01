@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TestFeatures : MonoBehaviour
 {
@@ -30,10 +31,17 @@ public class TestFeatures : MonoBehaviour
     GameObject toothPrefab;
     static bool equipped;
     public static Action OnTripleTap;
+
+    [SerializeField]
+    Image localDestruction;
+    static Image destruction;
+
     
     // Start is called before the first frame update
     void Start()
     {
+        if (localDestruction != null) 
+            destruction = localDestruction;
         debugged = false;
         swipeEnabled = false;
         equipped = false;
@@ -181,5 +189,17 @@ public class TestFeatures : MonoBehaviour
         
 
     }
+
+    public static void DestroyApp()
+    {
+        if (destruction != null)
+        {
+            destruction.gameObject.SetActive(true);
+            //destruction.enabled = true;
+
+        }
+    }
+
+
 
 }
