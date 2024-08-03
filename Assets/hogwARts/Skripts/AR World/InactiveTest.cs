@@ -28,7 +28,7 @@ public class InactiveTest : MonoBehaviour
     public void DiaryTest()
     {
         //TestFeatures.swipeEnabled = true;
-        //supportingScript.SpawnEquip("spada");
+        //supportingScript.SpawnEquip("dente");
         Vector3 spawnPosition = thisCamera.transform.position + Vector3.forward;
         Instantiate(diaryPrefab, spawnPosition, thisCamera.transform.rotation);
         gameObject.SetActive(false);
@@ -45,7 +45,7 @@ public class InactiveTest : MonoBehaviour
 
     public void NaginiTest()
     {
-        
+        //supportingScript.SpawnEquip("spada");
         Vector3 spawnPosition = thisCamera.transform.position + thisCamera.transform.forward;
         Instantiate(naginiPrefab, spawnPosition, Quaternion.LookRotation(this.transform.forward, Vector3.up));
         gameObject.SetActive(false);
@@ -53,7 +53,7 @@ public class InactiveTest : MonoBehaviour
 
     public void CupTest()
     {
-        //supportingScript.SpawnEquip("spada");
+        //supportingScript.SpawnEquip("dente");
         Vector3 spawnPosition = this.thisCamera.transform.position + thisCamera.transform.forward;
         Instantiate(cupPrefab, spawnPosition, thisCamera.transform.rotation);
         gameObject.SetActive(false);

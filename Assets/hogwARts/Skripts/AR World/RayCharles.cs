@@ -79,7 +79,7 @@ public class RayCharles : MonoBehaviour
     
     private void OpenSnitch(string sprach)
     {
-        if (sprach != "ultimacaccia") return;
+        if (sprach != "ultimacaccia" || !isAccioed) return;
 
         Instantiate(hitVFX, gameObject.transform.position, Quaternion.identity);
         Instantiate(gauntRing, gameObject.transform.position, Quaternion.identity);

@@ -439,6 +439,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5861682268612423741}
+  - component: {fileID: 816168378049427619}
   m_Layer: 0
   m_Name: TomRiddleDiary
   m_TagString: Horcrux
@@ -466,6 +467,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &816168378049427619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5256227324920573449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b21a78e5967127e45aaae2764363b760, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  diaryPages:
+  - {fileID: 3277581033826642653}
+  - {fileID: 5314801006272929797}
+  - {fileID: 7927749562643826732}
+  - {fileID: 3453437709639331007}
+  - {fileID: 8324083285513861062}
+  hintGO: {fileID: 8598512502179678704, guid: 9db94fd91d970b84a89d7019b546f744, type: 3}
+  greenScreen: {fileID: 9109625727532859255, guid: b9088809ac5eab642b3687ee55b1d0ec,
+    type: 3}
 --- !u!1 &5314801006272929797
 GameObject:
   m_ObjectHideFlags: 0
