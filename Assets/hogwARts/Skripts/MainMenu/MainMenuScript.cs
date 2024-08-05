@@ -34,14 +34,14 @@ public class MainMenuScript : MonoBehaviour
     GPSCoordinate myRoom = new GPSCoordinate(40.91540078137776f, 14.82838650405708f, "stanza di Valentino");
     Hashtable lokescions;
     LocalizationLogic locLogic;
-    bool isMenuDebug = true;
+    bool isMenuDebug = false;
     
     
     public void Awake()
     {
         latestDistance = float.MaxValue;
         InterSceneData.currentNearestLocation = myRoom;
-        isMenuDebug = true;
+        isMenuDebug = false;
         locLogic = GetComponent<LocalizationLogic>();
         locLogic.onLocationCheck.AddListener(updateUI);
         //locServ = new LocationService();

@@ -48,6 +48,8 @@ public class RayCharles : MonoBehaviour
             isAccioed = !isAccioed;
             ToggleAnimator();
         }
+        if (Input.GetKeyDown(KeyCode.Q) && isAccioed)
+            OpenSnitch("ultimacaccia");
 
         if (isAccioed)
         {

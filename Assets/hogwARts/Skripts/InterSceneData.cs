@@ -6,6 +6,7 @@ public static class InterSceneData
 {
     public static GPSCoordinate currentNearestLocation = null;
     public static string chosenLibrary = "Current Location";
+    public static bool debugMode = false;
 
     public static Color GetColorByLocation(GPSCoordinate location)
     {

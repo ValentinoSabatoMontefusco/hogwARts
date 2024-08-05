@@ -185,10 +185,7 @@ public class TestScript : MonoBehaviour
             else
             {
 
-                if (chosenPrefab.name == "SalazarMedallion")
-                {
-                    latestPrefab = Instantiate(chosenPrefab, trackedImage.transform.position, Quaternion.identity);
-                } else if (trackedImage.referenceImage.name == "CroceVerdeNera" || chosenPrefab.name == "Devinette" || trackedImage.referenceImage.name == "ChitarraVerde")
+               if (trackedImage.referenceImage.name == "CroceVerdeNera" || chosenPrefab.name == "Devinette" || trackedImage.referenceImage.name == "ChitarraVerde")
                 {
                     euroDevinettePrefab.SetActive(true);
                     latestTracked.text = "Devinette?";

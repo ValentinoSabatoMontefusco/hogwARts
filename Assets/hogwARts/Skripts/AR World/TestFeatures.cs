@@ -15,7 +15,8 @@ public class TestFeatures : MonoBehaviour
     public GameObject testPrefab;
     private bool debugged;
     public static bool swipeEnabled;
-    public TextMeshProUGUI debugText;
+    public TextMeshProUGUI[] debugText;
+    
 
     public GameObject debugMenu;
 
@@ -40,9 +41,13 @@ public class TestFeatures : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        debugged = !InterSceneData.debugMode;
+        foreach (TextMeshProUGUI dbTxt in debugText)
+        {
+            dbTxt.gameObject.SetActive(InterSceneData.debugMode);
+        }
         if (localDestruction != null) 
             destruction = localDestruction;
-        debugged = false;
         swipeEnabled = false;
         equipped = false;
         VoiceScript.accioing += SpawnEquip;
@@ -64,7 +69,7 @@ public class TestFeatures : MonoBehaviour
                 debugMenu.SetActive(true);
 
                 debugged = true;
-                debugText.color = Color.red;
+                debugText[0].color = Color.red;
             }
             
             Debug.Log("Triple tap felt");

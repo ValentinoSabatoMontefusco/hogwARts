@@ -48,6 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 15
+  fireEffects: {fileID: 0}
+  diadem: {fileID: 0}
 --- !u!65 &5931510910336955470
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -164,6 +166,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8692330692280256084, guid: 06478db8daea6034a82b66178ba93d02,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8692330692280256084, guid: 06478db8daea6034a82b66178ba93d02,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8692330692280256084, guid: 06478db8daea6034a82b66178ba93d02,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8692330692280256084, guid: 06478db8daea6034a82b66178ba93d02,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8692330692280256084, guid: 06478db8daea6034a82b66178ba93d02,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: -5645937942226959685, guid: 06478db8daea6034a82b66178ba93d02,
     type: 3}
@@ -173,3 +200,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7710732819498196986}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8228693866210278869 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -7408359968375250385, guid: 06478db8daea6034a82b66178ba93d02,
+    type: 3}
+  m_PrefabInstance: {fileID: 7710732819498196986}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8866718634535382983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8228693866210278869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1de7af753f930540ae70ab8300708cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ringCollider: {fileID: 5931510910336955470}

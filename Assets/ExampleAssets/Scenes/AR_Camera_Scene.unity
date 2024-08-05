@@ -947,7 +947,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   testPrefab: {fileID: 3510513389364172453, guid: be844094c6423074ca753409e1f28aba,
     type: 3}
-  debugText: {fileID: 223974228}
+  debugText:
+  - {fileID: 223974228}
+  - {fileID: 782628377}
   debugMenu: {fileID: 1716085813}
   eventSystem: {fileID: 1825070458971271654, guid: 3d0762dfb6602b945bdb51413df52573,
     type: 3}

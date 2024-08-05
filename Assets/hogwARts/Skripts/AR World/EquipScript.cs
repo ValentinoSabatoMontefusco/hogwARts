@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using TMPro;
+using System;
 
 public class EquipScript : MonoBehaviour
 {
@@ -38,6 +39,8 @@ public class EquipScript : MonoBehaviour
     [SerializeField]
     FloorProvider floorProvider;
     bool floorInstantiated;
+
+    public static Action<Collider> horcruxHit;
 
     public void Start()
     {
@@ -148,6 +151,7 @@ public class EquipScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+
         if (other.gameObject.CompareTag("Horcrux"))
         {
             if (!isGryffindor)
@@ -178,6 +182,7 @@ public class EquipScript : MonoBehaviour
 
     private void HorcruxHit(Collider other)
     {
+        horcruxHit?.Invoke(other);
         other.tag = "Untagged";
         GameObject.Instantiate(hitVFX, other.transform.position, Quaternion.identity);
         GameObject hint = Instantiate(hintGO, other.transform.position, Quaternion.identity);
@@ -188,6 +193,7 @@ public class EquipScript : MonoBehaviour
             case "SalazarMedallion(Clone)": hintText = "la bianca effigie di colui che ne incarnò realmente il potere /0"; break;
             case "HuffPuffCup(Clone)": hintText = "non senza amici, in prossimità della chiusura 6/"; break;
             case "Nagini(Clone)": hintText = "è l'ultima caccia\" 0"; break;
+            case "GauntRing(Clone)": hintText = ""; break;
             default: break;
         }
         hint.GetComponentInChildren<TextMeshPro>().text = hintText;

@@ -48,28 +48,74 @@ public class LocalizationLogic : MonoBehaviour
     public class LocationCallback : UnityEvent<LocationInfoPackage> { };
     public LocationCallback onLocationCheck = new();
 
+    IEnumerator AskPermissions()
+    {
+        while (!Permission.HasUserAuthorizedPermission(Permission.FineLocation))
+        {
+            Permission.RequestUserPermission(Permission.FineLocation);
+            yield return new WaitUntil(() => Permission.HasUserAuthorizedPermission(Permission.FineLocation));
+        }
+
+        while (!Permission.HasUserAuthorizedPermission(Permission.CoarseLocation))
+        {
+            Permission.RequestUserPermission(Permission.CoarseLocation);
+            yield return new WaitUntil(() => Permission.HasUserAuthorizedPermission(Permission.CoarseLocation));
+        }
+
+        if (locServ.isEnabledByUser)
+            locServ.Start();
+
+        yield return new WaitUntil(() => locServ.status == LocationServiceStatus.Running);
+
+        if (locServ.status == LocationServiceStatus.Running)
+        {
+
+            //GetComponent<MainMenuScript>().menuText.text += " sembra workare :O";
+            Debug.Log("Location service running");
+            if (locations != null)
+                GetComponent<MainMenuScript>().menuText.text = "\n Il quadtree contiene " + locations.Count + " nodi\n L'hashtable " + lokescions.Count;
+            else
+                GetComponent<MainMenuScript>().menuText.text = "Per qualche ragione il quadtree è null";
+            Input.compass.enabled = true;
+            StartCoroutine(checkLocation());
+
+        }
+        else
+        {
+            //GetComponent<MainMenuScript>().menuText.text += " sembra porcodio dare problemi";
+            Debug.Log("Location service not running");
+            // Handle service not working
+            //onLocationCheck.Invoke(new LocationInfoPackage(new Vector2(40.5f, 15), new GPSCoordinate(40.77427792171623f, 14.789859567782036f, (string)lokescions[new Vector2(40.77427792171623f, 14.789859567782036f)])));
+        }
+
+    }
     public void Awake()
     {
-        if (!Permission.HasUserAuthorizedPermission(Permission.FineLocation))
-        {
-            // Request fine location permission
-            Permission.RequestUserPermission(Permission.FineLocation);
-        }
-
-        if (!Permission.HasUserAuthorizedPermission(Permission.CoarseLocation))
-        {
-            // Request coarse location permission
-            Permission.RequestUserPermission(Permission.CoarseLocation);
-        }
-
-        locServ = new LocationService();
-
-        locServ.Start();
         lokescions = new Hashtable();
+        locServ = new LocationService();
         if (Application.platform == RuntimePlatform.Android)
         {
             StartCoroutine(CoroutineUmiliante());
+            StartCoroutine(AskPermissions());
         }
+        
+        //if (!Permission.HasUserAuthorizedPermission(Permission.FineLocation))
+        //{
+        //    // Request fine location permission
+        //    Permission.RequestUserPermission(Permission.FineLocation);
+        //}
+
+        //if (!Permission.HasUserAuthorizedPermission(Permission.CoarseLocation))
+        //{
+        //    // Request coarse location permission
+        //    Permission.RequestUserPermission(Permission.CoarseLocation);
+        //}
+
+        
+
+        
+        
+      
 
     }
 
@@ -84,26 +130,7 @@ public class LocalizationLogic : MonoBehaviour
         Debug.Log("Localization service start() called");
         //GetComponent<MainMenuScript>().menuText.text = "Verifica location service cominziata...";
 
-        if (locServ.status == LocationServiceStatus.Running)
-        {
-
-            //GetComponent<MainMenuScript>().menuText.text += " sembra workare :O";
-            Debug.Log("Location service running");
-            if (locations != null)
-                GetComponent<MainMenuScript>().menuText.text = "\n Il quadtree contiene " + locations.Count + " nodi\n L'hashtable " + lokescions.Count;
-            else
-                GetComponent<MainMenuScript>().menuText.text = "Per qualche ragione il quadtree è null";
-            Input.compass.enabled = true;
-            StartCoroutine(checkLocation());
-            
-        }
-        else
-        {
-            //GetComponent<MainMenuScript>().menuText.text += " sembra porcodio dare problemi";
-            Debug.Log("Location service not running");
-            // Handle service not working
-            //onLocationCheck.Invoke(new LocationInfoPackage(new Vector2(40.5f, 15), new GPSCoordinate(40.77427792171623f, 14.789859567782036f, (string)lokescions[new Vector2(40.77427792171623f, 14.789859567782036f)])));
-        }
+        
     }
 
     IEnumerator checkLocation()
