@@ -218,46 +218,6 @@ MonoBehaviour:
     m_Name: MuseoDellaMemoria
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
-      m_GuidLow: 5098846293733877689
-      m_GuidHigh: 7225588930411316893
-    m_SerializedTextureGuid:
-      m_GuidLow: 16227764917062414234
-      m_GuidHigh: 3231356453961772859
-    m_Size: {x: 0.3, y: 0.4}
-    m_SpecifySize: 1
-    m_Name: CroceVerdeNera
-    m_Texture: {fileID: 0}
-  - m_SerializedGuid:
-      m_GuidLow: 5719942599007551733
-      m_GuidHigh: 13276352866332425905
-    m_SerializedTextureGuid:
-      m_GuidLow: 910916149203142366
-      m_GuidHigh: 18221790730860177594
-    m_Size: {x: 0.3, y: 0.4}
-    m_SpecifySize: 1
-    m_Name: CroceVerdeNera
-    m_Texture: {fileID: 0}
-  - m_SerializedGuid:
-      m_GuidLow: 4814653107871490636
-      m_GuidHigh: 17645906252455636877
-    m_SerializedTextureGuid:
-      m_GuidLow: 4820198280842422272
-      m_GuidHigh: 11243103923896279656
-    m_Size: {x: 0.7, y: 0.93333334}
-    m_SpecifySize: 1
-    m_Name: CroceVerdeNera
-    m_Texture: {fileID: 0}
-  - m_SerializedGuid:
-      m_GuidLow: 5721366808257842329
-      m_GuidHigh: 1682194456016331934
-    m_SerializedTextureGuid:
-      m_GuidLow: 5144425420672601637
-      m_GuidHigh: 15274776138296470363
-    m_Size: {x: 1, y: 1.3333334}
-    m_SpecifySize: 1
-    m_Name: CroceVerdeNera
-    m_Texture: {fileID: 0}
-  - m_SerializedGuid:
       m_GuidLow: 4994433638985795256
       m_GuidHigh: 1667999403268232112
     m_SerializedTextureGuid:
@@ -376,4 +336,14 @@ MonoBehaviour:
     m_Size: {x: 0.3, y: 0.30555558}
     m_SpecifySize: 1
     m_Name: ChitarraVerde
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4947964843871297612
+      m_GuidHigh: 13502143736647530151
+    m_SerializedTextureGuid:
+      m_GuidLow: 6626113539502415894
+      m_GuidHigh: 122900855959516504
+    m_Size: {x: 1.4, y: 0.75705}
+    m_SpecifySize: 1
+    m_Name: UltimaCena
     m_Texture: {fileID: 0}

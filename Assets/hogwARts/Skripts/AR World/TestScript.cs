@@ -101,7 +101,7 @@ public class TestScript : MonoBehaviour
 
             _trackedImagesManager.enabled = false;
             Debug.Log("ImagesManager disabled, even though it should've already been so");
-            if (InterSceneData.chosenLibrary != null || InterSceneData.chosenLibrary != "Current Location")
+            if (InterSceneData.chosenLibrary != null && InterSceneData.chosenLibrary != "Current Location")
             {
                 Debug.Log("Menù a tendina non currentlokesionesco");
                 switch(InterSceneData.chosenLibrary)
@@ -193,8 +193,8 @@ public class TestScript : MonoBehaviour
                 else if (!_instantiatedPrefabs.ContainsKey(chosenPrefab.name))
                 {
                     latestPrefab = Instantiate(chosenPrefab, trackedImage.transform.position, trackedImage.transform.rotation);
-                    _instantiatedPrefabs.Add(trackedImage.referenceImage.name, latestPrefab);
-                    latestTracked.text = "Latest Tracked: " + trackedImage.name + " " + formattedPosition(trackedImage.transform);
+                    _instantiatedPrefabs.Add(chosenPrefab.name, latestPrefab);
+                    latestTracked.text = "Latest Tracked: " + imageName + " " + formattedPosition(trackedImage.transform);
                     latestInst.text = "Latest Inst: " + chosenPrefab.name + " " + formattedPosition(latestPrefab.transform);
 
 
