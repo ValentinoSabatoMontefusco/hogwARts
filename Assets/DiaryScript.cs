@@ -16,7 +16,12 @@ public class DiaryScript : MonoBehaviour
     [SerializeField]
     GameObject greenScreen;
 
+    [SerializeField]
+    AudioSource poisonousHit_sfx;
+
     GameObject myGreenScreen;
+
+
     
     private void Start()
     {
@@ -42,6 +47,10 @@ public class DiaryScript : MonoBehaviour
     void PageDestroyed()
     {
         diaryPages.RemoveAt(0);
+        if (poisonousHit_sfx != null)
+        {
+            poisonousHit_sfx.Play();
+        }
         StartCoroutine(FlashScreen(5 - diaryPages.Count));
         if (diaryPages.Count <= 0)
         {

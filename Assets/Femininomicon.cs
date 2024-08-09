@@ -16,7 +16,13 @@ public class Femininomicon : MonoBehaviour
     void Start()
     {
         voiceScript.onRecordingToggle += ToggleIcon;
+        if (Application.platform != RuntimePlatform.Android)
+        {
+            Debug.Log("Android non captato, bacchetta listenata");
+            GetComponent<Button>().onClick.AddListener(() => { Debug.Log("Bacchetta Clicked"); });
+        }
         GetComponent<Button>().onClick.AddListener(voiceScript.ToggleListening);
+        
     }
 
     // Update is called once per frame
@@ -27,6 +33,7 @@ public class Femininomicon : MonoBehaviour
 
     void ToggleIcon(bool isRecording)
     {
+        
         if (isRecording)
         {
             GetComponent<Image>().sprite = recording;

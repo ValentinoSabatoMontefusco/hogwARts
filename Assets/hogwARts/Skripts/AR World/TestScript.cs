@@ -123,27 +123,27 @@ public class TestScript : MonoBehaviour
                 { 
                     case "UltimaCena":
                         _trackedImagesManager.referenceLibrary = ultimacenaLibrary;
-                        latestInst.text = "NearestLocation = " + InterSceneData.currentNearestLocation.Name; break;
+                        latestInst.text = "NearestLocation = " + InterSceneData.currentNearestLocation.Name + ", Library = " + _trackedImagesManager.referenceLibrary.ToString(); break;
                     case "AnceliMercatone":
                         _trackedImagesManager.referenceLibrary = mercatoneLibrary;
-                        latestInst.text = "NearestLocation = " + InterSceneData.currentNearestLocation.Name; break;
+                        latestInst.text = "NearestLocation = " + InterSceneData.currentNearestLocation.Name + ", Library = " + _trackedImagesManager.referenceLibrary.ToString(); break;
                     case "StemmaFontana":
                         _trackedImagesManager.referenceLibrary = fontanaLibrary;
-                        latestInst.text = "NearestLocation = " + InterSceneData.currentNearestLocation.Name; break;
+                        latestInst.text = "NearestLocation = " + InterSceneData.currentNearestLocation.Name + ", Library = " + _trackedImagesManager.referenceLibrary.ToString(); break;
                     case "Quarto beach arena":
                     case "FantasmaScuola":
                         _trackedImagesManager.referenceLibrary = fantasmaLibrary;
-                        latestInst.text = "NearestLocation = " + InterSceneData.currentNearestLocation.Name; break;
+                        latestInst.text = "NearestLocation = " + InterSceneData.currentNearestLocation.Name + ", Library = " + _trackedImagesManager.referenceLibrary.ToString(); break;
                     case "MuseoDellaMemoria":
                         _trackedImagesManager.referenceLibrary = museoLibrary;
-                        latestInst.text = "NearestLocation = " + InterSceneData.currentNearestLocation.Name; break;
+                        latestInst.text = "NearestLocation = " + InterSceneData.currentNearestLocation.Name + ", Library = " + _trackedImagesManager.referenceLibrary.ToString(); break;
                     case "PAM nderro casa":
-                    case "CroceVerdeNera":
+                    case "ChitarraVerde":
                         _trackedImagesManager.referenceLibrary = croceverdeneraLibrary;
-                        latestInst.text = "NearestLocation = " + InterSceneData.currentNearestLocation.Name; break;
+                        latestInst.text = "NearestLocation = " + InterSceneData.currentNearestLocation.Name + ", Library = " + _trackedImagesManager.referenceLibrary.ToString(); break;
                     default:
                         _trackedImagesManager.referenceLibrary = defaultLibrary;
-                        latestInst.text = "NearestLocation = " + InterSceneData.currentNearestLocation.Name; break;
+                        latestInst.text = "NearestLocation = " + InterSceneData.currentNearestLocation.Name + ", Library = " + _trackedImagesManager.referenceLibrary.ToString(); break;
                 }
                 Debug.Log("Libreria scelta tramite prossimità: " + _trackedImagesManager.referenceLibrary.ToString());
             }
@@ -193,6 +193,7 @@ public class TestScript : MonoBehaviour
                 else if (!_instantiatedPrefabs.ContainsKey(chosenPrefab.name))
                 {
                     latestPrefab = Instantiate(chosenPrefab, trackedImage.transform.position, trackedImage.transform.rotation);
+                    latestPrefab.transform.rotation = Quaternion.LookRotation(latestPrefab.transform.forward, Vector3.up);
                     _instantiatedPrefabs.Add(chosenPrefab.name, latestPrefab);
                     latestTracked.text = "Latest Tracked: " + imageName + " " + formattedPosition(trackedImage.transform);
                     latestInst.text = "Latest Inst: " + chosenPrefab.name + " " + formattedPosition(latestPrefab.transform);

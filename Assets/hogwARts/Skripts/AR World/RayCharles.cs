@@ -76,6 +76,7 @@ public class RayCharles : MonoBehaviour
         {
             isAccioed = true;
             ToggleAnimator();
+            GetComponentInChildren<TrailRenderer>().enabled = !GetComponentInChildren<TrailRenderer>().enabled;
         }
     }
     

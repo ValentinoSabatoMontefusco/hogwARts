@@ -61,6 +61,7 @@ public class NaginiScript : MonoBehaviour
                     gridsies = GameObject.Instantiate(gridPrefab, this.transform);
                     gridsies.transform.position -= new Vector3(0, 1.5f, 4.5f);
                 }
+                instancedGrid = true;
             }
             serpenteseGO.SetActive(false);
             serpenteseGO.SetActive(true);

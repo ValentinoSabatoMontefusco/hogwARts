@@ -94,7 +94,7 @@ public class DebugManager : MonoBehaviour
         function();
     }
    
-    void EnableDebug()
+    public void EnableDebug()
     {
         InterSceneData.debugMode = true;
         foreach (GameObject go in debugItems)

@@ -35,10 +35,17 @@ public class MainMenuScript : MonoBehaviour
     Hashtable lokescions;
     LocalizationLogic locLogic;
     bool isMenuDebug = false;
-    
+
+    ScreenOrientation lastSO;
+    GameObject canvas;
     
     public void Awake()
     {
+        if (Application.platform != RuntimePlatform.Android)
+        {
+            Debug.Log("Not testing on phone, debug mode enabled");
+            GameObject.Find("Canvas").GetComponent<DebugManager>().EnableDebug();
+        }
         latestDistance = float.MaxValue;
         InterSceneData.currentNearestLocation = myRoom;
         isMenuDebug = false;
@@ -108,9 +115,19 @@ public class MainMenuScript : MonoBehaviour
         //    menuText.text += ". succesfully.";
         //} else
         //    menuText.text += ". failurely :c";
-        
-        
 
+        lastSO = Screen.orientation;
+        canvas = GameObject.Find("Canvas");
+
+    }
+    private void Update()
+    {
+        //ScreenOrientation currentSO = Screen.orientation;
+        //if (currentSO != lastSO)
+        //{
+        //    if (currentSO == ScreenOrientation.Portrait)
+        //        canvas.GetComponent<CanvasScaler>().screenMatchMode = CanvasScaler.ScreenMatchMode.e
+        //}
     }
 
     private void updateUI(LocationInfoPackage locInfo)

@@ -219,3 +219,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ringCollider: {fileID: 5931510910336955470}
+  floatingText: {fileID: 4999728387265240083, guid: 1008ce512544bbb4f98a46b41b1084c3,
+    type: 3}

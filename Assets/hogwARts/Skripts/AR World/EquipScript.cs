@@ -188,15 +188,18 @@ public class EquipScript : MonoBehaviour
         GameObject hint = Instantiate(hintGO, other.transform.position, Quaternion.identity);
         hint.transform.LookAt(Camera.main.transform.position);
         string hintText = "";
+        Color hintColor = Color.black;
         switch (other.name)
         {
-            case "SalazarMedallion(Clone)": hintText = "la bianca effigie di colui che ne incarnò realmente il potere /0"; break;
-            case "HuffPuffCup(Clone)": hintText = "non senza amici, in prossimità della chiusura 6/"; break;
-            case "Nagini(Clone)": hintText = "è l'ultima caccia\" 0"; break;
+            case "SalazarMedallion(Clone)": hintText = "la bianca effigie di colui che ne incarnò realmente il potere /0"; hintColor = Color.green; break;
+            case "HuffPuffCup(Clone)": hintText = "non senza amici, in prossimità della chiusura 6/"; hintColor = Color.yellow; break;
+            case "Nagini(Clone)": hintText = "è l'ultima caccia\" 0"; hintColor = Color.gray; break;
             case "GauntRing(Clone)": hintText = ""; break;
             default: break;
         }
         hint.GetComponentInChildren<TextMeshPro>().text = hintText;
+        if (hintColor != Color.black)
+            hint.GetComponentInChildren<TextMeshPro>().color = hintColor;
 
         //Destroy(other.gameObject);
         Animator otherAnimator = other.GetComponent<Animator>();
