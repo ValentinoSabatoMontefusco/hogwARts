@@ -1,8 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -37,7 +35,30 @@ public class TestFeatures : MonoBehaviour
     Image localDestruction;
     static Image destruction;
 
-    
+    [SerializeField]
+    List<GameObject> debugButtons = new();
+
+    Dictionary<ARDebugOptions, GameObject> debugOptions;
+
+
+    private void Awake()
+    {
+        debugOptions = new() { { ARDebugOptions.Diario, debugButtons[0] }, { ARDebugOptions.Boccino, debugButtons[1] }, 
+            { ARDebugOptions.Medaglione, debugButtons[2] }, { ARDebugOptions.Coppa, debugButtons[3] }, { ARDebugOptions.Diadema, debugButtons[4] }, 
+            { ARDebugOptions.Nagini, debugButtons[5] } };
+
+        if (InterSceneData.currentOption != ARDebugOptions.Nendi)
+        {
+            debugMenu.SetActive(true);
+            for (int i = 0; i < 6; i++)
+            {
+                GameObject child = debugMenu.transform.GetChild(i).gameObject;
+                if (child.Equals(debugOptions[InterSceneData.currentOption]))
+                    continue;
+                child.SetActive(false);
+            }
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {

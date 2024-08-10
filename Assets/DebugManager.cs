@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using UnityEngine.SceneManagement;
 
 public class DebugManager : MonoBehaviour
 {
@@ -36,6 +37,24 @@ public class DebugManager : MonoBehaviour
             if (string.Compare(value, "mercadante", StringComparison.OrdinalIgnoreCase) == 0)
             {
                 EnableDebug();
+                return;
+            }
+            
+
+            switch (value)
+            {
+                case "Jones": InterSceneData.currentOption = ARDebugOptions.Diario; break;
+                case "Sauron": InterSceneData.currentOption = ARDebugOptions.Boccino; break;
+                case "Legno": InterSceneData.currentOption = ARDebugOptions.Medaglione; break;
+                case "Davis": InterSceneData.currentOption = ARDebugOptions.Coppa; break;
+                case "Soldi": InterSceneData.currentOption = ARDebugOptions.Diadema; break;
+                case "Tossico": InterSceneData.currentOption = ARDebugOptions.Nagini; break;
+                default: InterSceneData.currentOption = ARDebugOptions.Nendi; break;
+            }
+
+            if (InterSceneData.currentOption != ARDebugOptions.Nendi)
+            {
+                SceneManager.LoadScene(1);
             }
         });
         console.enabled = false;

@@ -7,7 +7,8 @@ public static class InterSceneData
     public static GPSCoordinate currentNearestLocation = null;
     public static string chosenLibrary = "Current Location";
     public static bool debugMode = false;
-
+    public static ARDebugOptions currentOption = ARDebugOptions.Nendi;
+    
     public static Color GetColorByLocation(GPSCoordinate location)
     {
         Debug.Log("InterSceneData reads location name: " + location.Name);
@@ -25,5 +26,17 @@ public static class InterSceneData
 
     private static Dictionary<string, Color> colourz = new Dictionary<string, Color> { { "stanza di Valentino", Color.red }, {"PAM nderro casa", Color.green }, { "villa comunale", Color.blue } };
 
+    
+}
+
+public enum ARDebugOptions
+{
+    Nendi,
+    Diario,
+    Boccino,
+    Medaglione,
+    Coppa,
+    Diadema,
+    Nagini
 }
 

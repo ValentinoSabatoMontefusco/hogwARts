@@ -959,6 +959,13 @@ MonoBehaviour:
   toothPrefab: {fileID: 4676873470247303300, guid: 662c7b14c8c3ee64cb5e3bfe6d78caed,
     type: 3}
   localDestruction: {fileID: 769359976}
+  debugButtons:
+  - {fileID: 138073111}
+  - {fileID: 1990805418}
+  - {fileID: 134440334}
+  - {fileID: 1065629570}
+  - {fileID: 1026084222}
+  - {fileID: 758062321}
 --- !u!114 &388525035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1195,8 +1202,8 @@ MonoBehaviour:
   m_text: 'Al vil Caractacus fui venduto per una cifra irrisoria
 
 
-    inquadrala,
-    l''onta, se di me vuoi aver vittoria'
+    di tale onta
+    inquadra il romanico portale, se di me vuoi aver vittoria'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 401f27bfc233e674e81d337fefd37b4e, type: 2}
   m_sharedMaterial: {fileID: -9125724071137202199, guid: 401f27bfc233e674e81d337fefd37b4e,
@@ -2940,7 +2947,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1716085814
 MonoBehaviour:
   m_ObjectHideFlags: 0
